@@ -1,0 +1,28 @@
+:root {
+    --brand-strawberry: var(--red-5);
+
+    --text-1-strawberry: var(--red-9);
+    --text-2-strawberry: var(--red-7);
+
+    --surface-1-strawberry: var(--red-0);
+    --surface-2-strawberry: var(--red-1);
+    --surface-3-strawberry: var(--red-2);
+    --surface-4-strawberry: var(--red-3);
+
+    --surface-shadow-strawberry: var(--red-12-hsl);
+    --shadow-strength-strawberry: 2%;
+}
+
+[color-scheme="strawberry"] {
+    color-scheme: strawberry;
+
+    --brand: var(--brand-strawberry);
+    --text-1: var(--text-1-strawberry);
+    --text-2: var(--text-2-strawberry);
+    --surface-1: var(--surface-1-strawberry);
+    --surface-2: var(--surface-2-strawberry);
+    --surface-3: var(--surface-3-strawberry);
+    --surface-4: var(--surface-4-strawberry);
+    --surface-shadow: var(--surface-shadow-strawberry);
+    --shadow-strength: var(--shadow-strength-strawberry);
+}
