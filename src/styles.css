@@ -1,6 +1,7 @@
 @import "styles/typography.css";
 /* the props */
 @import "open-props/style";
+@import "open-props/media";
 
 /* optional imports that use the props */
 @import "open-props/normalize";
@@ -9,16 +10,30 @@
 @import "open-props/brand-colors";
 
 @import "styles/themes/_themes.css";
+@import "styles/surfaces.css";
+@import "styles/shadows.css";
+@import "styles/borders.css";
+@import "styles/layout.css";
+@import "styles/size.css";
 
-
-:root {
-}
 
 html {
-    font-family: var(--font-sub);
+    font-family: var(--font-sub), serif;
+}
+
+body {
+
+    max-width: var(--size-lg);
+    margin: auto;
 }
 
 h1, h2, h3, h4 {
-    font-family: var(--font-title);
+    font-family: var(--font-title), serif;
     font-weight: var(--font-weight-bold);
+}
+
+app-root {
+    * {
+        display: block;
+    }
 }

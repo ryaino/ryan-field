@@ -32,9 +32,11 @@ import { FormControl, ReactiveFormsModule } from "@angular/forms";
                     </h1>
                     <br>
                     <p class="text-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                        incididunt ut labore et dolore magna aliqua.</p>
+                        incididunt ut labore et dolore magna aliqua.
+                    </p>
                     <p class="text-2">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                        ex ea commodo consequat.</p>
+                        ex ea commodo consequat.
+                    </p>
                 </div>
             </section>
         </main>
@@ -140,33 +142,6 @@ import { FormControl, ReactiveFormsModule } from "@angular/forms";
             background-color: var(--brand);
         }
 
-        .surface-1 {
-            background-color: var(--surface-1);
-            color: var(--text-2);
-        }
-
-        .surface-2 {
-            background-color: var(--surface-2);
-            color: var(--text-2);
-        }
-
-        .surface-3 {
-            background-color: var(--surface-3);
-            color: var(--text-1);
-        }
-
-        .surface-4 {
-            background-color: var(--surface-4);
-            color: var(--text-1);
-        }
-
-        .text-1 {
-            color: var(--text-1);
-        }
-
-        .text-2 {
-            color: var(--text-2);
-        }
 
         .swatch {
             display: inline-block;
@@ -182,16 +157,6 @@ import { FormControl, ReactiveFormsModule } from "@angular/forms";
             &.text-2 {
                 background-color: var(--text-2);
             }
-        }
-
-        .rad-shadow {
-            box-shadow: 0 1rem .5rem -.5rem;
-            box-shadow: 0 2.8px 2.2px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 3%)),
-            0 6.7px 5.3px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 1%)),
-            0 12.5px 10px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 2%)),
-            0 22.3px 17.9px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 2%)),
-            0 41.8px 33.4px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 3%)),
-            0 100px 80px hsl(var(--surface-shadow) / var(--shadow-strength));
         }
     `,
 } )

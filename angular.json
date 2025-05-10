@@ -47,20 +47,6 @@
         },
         "test": {
           "builder": "@analogjs/vitest-angular:test"
-        },
-        "storybook": {
-          "builder": "@analogjs/storybook-angular:start-storybook",
-          "options": {
-            "configDir": "./.storybook",
-            "port": 6006
-          }
-        },
-        "build-storybook": {
-          "builder": "@analogjs/storybook-angular:build-storybook",
-          "options": {
-            "configDir": "./.storybook",
-            "outputDir": "storybook-static"
-          }
         }
       }
     }

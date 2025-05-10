@@ -8,23 +8,6 @@ import { HeroComponent } from "../ui/hero/hero.component";
     <app-hero></app-hero>
   `,
   styles: `
-    .logo {
-      will-change: filter;
-    }
-
-    .logo:hover {
-      filter: drop-shadow(0 0 2em #646cffaa);
-    }
-
-    .read-the-docs > * {
-      color: #fff;
-    }
-
-    @media (prefers-color-scheme: light) {
-      .read-the-docs > * {
-        color: #213547;
-      }
-    }
   `,
   imports: [
     HeroComponent
