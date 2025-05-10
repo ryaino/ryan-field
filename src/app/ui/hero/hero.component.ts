@@ -5,7 +5,7 @@ import { NgOptimizedImage } from '@angular/common'
   selector: 'app-hero',
   imports: [NgOptimizedImage],
   templateUrl: './hero.component.html',
-  styleUrl: './hero.component.css'
+  styleUrl: './hero.component.scss'
 })
 export class HeroComponent {
 }

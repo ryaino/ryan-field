@@ -11,8 +11,18 @@ export default defineConfig(({ mode }) => ({
   resolve: {
     mainFields: ['module'],
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'legacy',
+      },
+    },
+  },
   plugins: [
       analog({
+        vite: {
+          inlineStylesExtension: 'scss'
+        },
         prerender: {
           routes: ['/']
         }

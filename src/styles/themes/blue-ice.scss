@@ -1,0 +1,29 @@
+
+:root {
+    --brand-blue-ice: var(--cyan-5);
+
+    --text-1-blue-ice: var(--cyan-9);
+    --text-2-blue-ice: var(--cyan-7);
+
+    --surface-1-blue-ice: var(--cyan-0);
+    --surface-2-blue-ice: var(--cyan-1);
+    --surface-3-blue-ice: var(--cyan-2);
+    --surface-4-blue-ice: var(--cyan-3);
+
+    --surface-shadow-blue-ice: var(--cyan-12-hsl);
+    --shadow-strength-blue-ice: 2%;
+}
+
+[color-scheme="blue-ice"] {
+    color-scheme: blue-ice;
+
+    --brand: var(--brand-blue-ice);
+    --text-1: var(--text-1-blue-ice);
+    --text-2: var(--text-2-blue-ice);
+    --surface-1: var(--surface-1-blue-ice);
+    --surface-2: var(--surface-2-blue-ice);
+    --surface-3: var(--surface-3-blue-ice);
+    --surface-4: var(--surface-4-blue-ice);
+    --surface-shadow: var(--surface-shadow-blue-ice);
+    --shadow-strength: var(--shadow-strength-blue-ice);
+}

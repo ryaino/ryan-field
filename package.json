@@ -53,9 +53,11 @@
     "postcss-custom-media": "^11.0.5",
     "postcss-load-config": "^6.0.1",
     "postcss-plugin": "^1.0.0",
+    "schematics-scss-migrate": "^2.3.17",
     "storybook": "^8.6.12",
     "typescript": "~5.8.0",
     "vite": "^6.0.0",
+    "vite-plugin-sass": "^0.1.0",
     "vite-tsconfig-paths": "^4.2.0",
     "vitest": "^3.0.0"
   }

@@ -48,6 +48,11 @@
         "test": {
           "builder": "@analogjs/vitest-angular:test"
         }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
       }
     }
   },
