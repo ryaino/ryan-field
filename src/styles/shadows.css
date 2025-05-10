@@ -1,0 +1,8 @@
+.rad-shadow {
+    box-shadow: 0 3px 2px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 3%)),
+    0 7px 5px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 1%)),
+    0 13px 10px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 2%)),
+    0 22px 18px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 2%)),
+    0 42px 33px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 3%)),
+    0 100px 80px hsl(var(--surface-shadow) / var(--shadow-strength));
+}
