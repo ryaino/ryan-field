@@ -1,0 +1,42 @@
+@use "styles/typography.css";
+/* the props */
+@use "open-props/style";
+@use "open-props/media";
+
+/* optional uses that use the props */
+@use "open-props/normalize";
+@use "open-props/buttons";
+@use "open-props/colors-hsl";
+@use "open-props/brand-colors";
+
+@forward 'styles/variables';
+@use "styles/themes/themes";
+@use "styles/surfaces.css";
+@forward "styles/shadows";
+@use "styles/borders.css";
+@forward "styles/layout";
+@forward "styles/size";
+
+
+html {
+    font-family: var(--font-sub), serif;
+    padding-left: var(--size-5);
+    padding-right: var(--size-5);
+}
+
+body {
+
+    max-width: var(--size-lg);
+    margin: auto;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-title), serif;
+    font-weight: var(--font-weight-bold);
+}
+
+app-root {
+    * {
+        display: block;
+    }
+}
