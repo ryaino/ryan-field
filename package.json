@@ -26,6 +26,8 @@
     "@angular/platform-browser-dynamic": "^19.0.0",
     "@angular/platform-server": "^19.0.0",
     "@angular/router": "^19.0.0",
+    "@ng-icons/core": "^31.4.0",
+    "@ng-icons/material-icons": "^31.4.0",
     "@tailwindcss/vite": "^4.1.4",
     "front-matter": "^4.0.2",
     "marked": "^15.0.7",
@@ -38,7 +40,7 @@
     "rxjs": "~7.8.0",
     "tailwindcss": "^4.1.4",
     "tslib": "^2.3.0",
-    "zone.js": "~0.15.0"
+    "zone.js": "^0.15.0"
   },
   "devDependencies": {
     "@analogjs/platform": "^1.16.0",

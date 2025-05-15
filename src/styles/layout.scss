@@ -1,0 +1,84 @@
+@use 'variables';
+@use "sass:meta";
+@use "sass:string";
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.grow {
+  flex-grow: 1;
+}
+
+.relative {
+  position: relative;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.center {
+  margin: auto;
+}
+
+
+@each $value in variables.$justify-content {
+  .jc-#{$value} {
+    justify-content: #{$value};
+  }
+}
+
+@each $size in variables.$sizes {
+  .row-above-#{$size} {
+    display: flex;
+    flex-direction: column;
+
+    @media (--#{$size}-n-above) {
+      flex-direction: row;
+    }
+  }
+}
+
+
+@mixin apply-to-all($mixin, $list, $prefix) {
+  @each $value in $list {
+    @include meta.apply($mixin, $value, $prefix);
+  }
+}
+
+@mixin size-mod($mixin, $value, $prefix) {
+  @each $size in variables.$sizes {
+    @media (--#{$size}-n-above) {
+      #{$prefix}-#{$value}_#{$size} {
+        @include meta.apply($mixin, $value);
+      }
+    }
+  }
+}
+
+@mixin create-gap($i) {
+  gap: var(--size-#{$i});
+}
+
+@for $i from 1 through 15 {
+  .gap-#{$i} {
+    @include create-gap($i)
+  }
+  @include meta.apply(meta.get-mixin("size-mod"), meta.get-mixin("create-gap"), $i, ".gap");
+}
+
+
+
+
+
+
+
+
+
+

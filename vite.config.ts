@@ -8,6 +8,9 @@ export default defineConfig(({ mode }) => ({
   build: {
     target: ['es2020'],
   },
+  server: {
+    host: true
+  },
   resolve: {
     mainFields: ['module'],
   },
@@ -15,6 +18,7 @@ export default defineConfig(({ mode }) => ({
     preprocessorOptions: {
       scss: {
         api: 'legacy',
+        silenceDeprecations: ["legacy-js-api"],
       },
     },
   },

@@ -6,7 +6,9 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [ RouterOutlet ],
   template: `
-    <router-outlet />
+      @defer {
+          <router-outlet/>
+      }
   `,
   styles: `
   `,

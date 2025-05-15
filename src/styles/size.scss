@@ -1,0 +1,37 @@
+.width-100 {
+    width: 100%;
+}
+
+.height-100 {
+    height: 100%;
+}
+
+.w-max {
+    width: max-content;
+}
+
+.h-max {
+    height: max-content;
+}
+
+.ratio-portrait {
+    aspect-ratio: 3/4;
+}
+
+@for $i from 1 through 15 {
+    .max-w-#{$i} {
+        max-width: var(--size-#{$i})
+    }
+
+    .w-#{$i} {
+        width: var(--size-#{$i})
+    }
+
+    .max-h-#{$i} {
+        max-height: var(--size-#{$i})
+    }
+
+    .h-#{$i} {
+        height: var(--size-#{$i})
+    }
+}
