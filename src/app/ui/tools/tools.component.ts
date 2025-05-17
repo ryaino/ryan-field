@@ -20,21 +20,32 @@ export class ToolsComponent {
             matterService.createBodies();
             matterService.runRender();
             matterService.runEngine();
-            window.scrollTo( 0, document.body.scrollHeight );
+            // window.scrollTo( 0, document.body.scrollHeight );
 
             tools.forEach((tool, index) => {
                 setTimeout( () => {
-                    const body = this.matterService.createCircle( 350 + index, 0, 40, {
-                        restitution: 0.5,
-                        render: {
-                            sprite: {
-                                texture: `/src/assets/logos/logo_${ tool }.png`,
-                                xScale: 0,
-                                yScale: 0
+                    const image = new Image();
+                    image.onload = () => {
+                        const body = this.matterService.createCircle( this.matterService.canvasWidth, 0, this.matterService.canvasWidth / 26, {
+                            restitution: 0.59,
+                            frictionAir: 0.001,
+                            density: 0.01,
+                            force: {
+                                x: this.matterService.canvasWidth / 26 /-40,
+                                y: 0
+                            },
+                            render: {
+                                sprite: {
+                                    texture: image.src,
+                                    xScale: this.matterService.canvasWidth / 26 / 20,
+                                    yScale: this.matterService.canvasWidth / 26 / 20
+                                }
                             }
-                        }
-                    } );
-                    this.matterService.addBodies( [ body ] )
+                        } );
+                        this.matterService.addBodies( [ body ] )
+                    };
+                    image.src = `/src/assets/logos/logo_${ tool }.png`;
+
                 }, index * 500 )
             })
         } )

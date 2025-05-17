@@ -64,4 +64,11 @@ export class MatterService {
     public createCircle(x: number, y: number, radius: number, options?: IBodyDefinition, maxSides?: number) {
         return Matter.Bodies.circle(x, y, radius, options, maxSides);
     }
+
+    public get canvasHeight() {
+        return this.canvasRect!.height
+    }
+    public get canvasWidth() {
+        return this.canvasRect!.width
+    }
 }

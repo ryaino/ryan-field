@@ -11,8 +11,14 @@ import { ToolsComponent } from "../ui/tools/tools.component";
       <hr>
       <app-responsibilities></app-responsibilities>
       <hr>
-      <app-tools></app-tools>
-      <hr>
+      @defer (on viewport){
+        <app-tools></app-tools>
+        <hr>
+      } @placeholder {
+        <section class="flex-column align-items-center gap-8">
+          <h2 class="weight-6 text-center">What I Have Experience Using</h2>
+        </section>
+      }
   `,
   styles: `
   `,

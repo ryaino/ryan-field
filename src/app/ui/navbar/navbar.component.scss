@@ -1,0 +1,9 @@
+:host {
+  background: var(--surface-4);
+  border-radius: 0 0 var(--radius-conditional-3) var(--radius-conditional-3);
+  height: var(--size-8);
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--size-fluid-5);
+  padding: var(--size-3);
+}

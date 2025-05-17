@@ -1,0 +1,28 @@
+:root {
+  --brand-lime: var(--lime-5);
+
+  --text-1-lime: var(--lime-9);
+  --text-2-lime: var(--lime-7);
+
+  --surface-1-lime: var(--lime-0);
+  --surface-2-lime: var(--lime-1);
+  --surface-3-lime: var(--lime-2);
+  --surface-4-lime: var(--lime-3);
+
+  --surface-shadow-lime: var(--lime-12-hsl);
+  --shadow-strength-lime: 2%;
+}
+
+[color-scheme="lime"] {
+  color-scheme: lime;
+
+  --brand: var(--brand-lime);
+  --text-1: var(--text-1-lime);
+  --text-2: var(--text-2-lime);
+  --surface-1: var(--surface-1-lime);
+  --surface-2: var(--surface-2-lime);
+  --surface-3: var(--surface-3-lime);
+  --surface-4: var(--surface-4-lime);
+  --surface-shadow: var(--surface-shadow-lime);
+  --shadow-strength: var(--shadow-strength-lime);
+}
