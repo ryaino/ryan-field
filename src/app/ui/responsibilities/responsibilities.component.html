@@ -1,51 +1,18 @@
 <section class="flex-column align-items-center gap-8">
     <h2 class="weight-6 text-center">What I do</h2>
-    <div class="flex width-100 gap-5 container">
+    <div class="width-100 container">
+        @for (responsibility of responsibilities; track responsibility.emote) {
 
-        <div class="card rad-shadow surface-2">
-            <ng-icon name="matPeopleAltRound"/>
-            <div>
-                <h4>Stakeholder Management</h4>
-                <p>
-                    Whether it's client requests or internal roadmaps, I can work with stakeholders to transform their
-                    ideas into technical plans that are ready to develop.
-                </p>
+            <div class="card rad-shadow surface-2">
+                <ng-icon [name]="responsibility.emote"/>
+                <div>
+                    <h4>{{ responsibility.heading }}</h4>
+                    <p>
+                        {{ responsibility.text }}
+                    </p>
+                </div>
             </div>
-        </div>
 
-        <div class="card rad-shadow surface-2">
-            <ng-icon name="matStorageRound"/>
-            <div>
-                <h4>Backend Development</h4>
-                <p>
-                    Creating REST endpoints, database updates, CRON jobs, web scraping or talking to external services.
-                    These are some the tasks I can get done using a variety of languages and frameworks.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <div class="flex width-100 gap-5 container">
-        <div class="card rad-shadow surface-2">
-            <ng-icon name="matCodeRound"/>
-            <div>
-                <h4>Frontend Development</h4>
-                <p>
-                    I love creating interactive experiences that solve problems for users. Both customer facing and
-                    internal application work brings me lots of satisfaction.
-                </p>
-            </div>
-        </div>
-
-        <div class="card rad-shadow surface-2">
-            <ng-icon name="matHandshakeRound"/>
-            <div>
-                <h4>Mentoring</h4>
-                <p>
-                    Remembering what it was like to be a junior myself has motivated me to help in any way I can. I take
-                    the time to teach how to fish rather than hand out the fish.
-                </p>
-            </div>
-        </div>
+        }
     </div>
 </section>

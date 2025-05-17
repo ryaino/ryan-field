@@ -1,19 +1,19 @@
-@use "styles/typography.css";
+@forward "styles/typography.css";
 /* the props */
-@use "open-props/style";
-@use "open-props/media";
+@forward "open-props/style";
+@forward "open-props/media";
 
-/* optional uses that use the props */
-@use "open-props/normalize";
-@use "open-props/buttons";
-@use "open-props/colors-hsl";
-@use "open-props/brand-colors";
+/* optional forwards that forward the props */
+@forward "open-props/normalize";
+@forward "open-props/buttons";
+@forward "open-props/colors-hsl";
+@forward "open-props/brand-colors";
 
 @forward 'styles/variables';
-@use "styles/themes/themes";
-@use "styles/surfaces.css";
+@forward "styles/themes/themes";
+@forward "styles/surfaces.css";
 @forward "styles/shadows";
-@use "styles/borders.css";
+@forward "styles/borders.css";
 @forward "styles/layout";
 @forward "styles/size";
 

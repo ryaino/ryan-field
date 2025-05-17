@@ -4,8 +4,11 @@
   display: block;
 }
 
-
 .container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--size-7);
+  justify-content: space-evenly;
 }
 
 .card {
@@ -15,12 +18,13 @@
   gap: var(--size-4);
   border-radius: var(--radius-conditional-2);
   border: var(--border-size-1) solid var(--text-2);
-  max-width: 50%;
-  min-width: 40%;
-
+  width: 100%;
   ng-icon {
-    width: 80px;
-    height: 80px;
+    --icon-size: var(--size-8);
+
+    width: var(--icon-size);
+    min-width: var(--icon-size);
+    height: var(--icon-size);
     color: var(--brand);
   }
 
@@ -31,4 +35,10 @@
     height: 100%;
   }
 
+}
+
+@media (width >= 712px) {
+  .card {
+    width: var(--size-fluid-10);
+  }
 }
