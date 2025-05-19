@@ -18,6 +18,14 @@
 @forward "styles/size";
 
 
+//@media (prefers-color-scheme: dark) {
+//    button {
+//
+//            all: revert;
+//
+//    }
+//}
+
 html {
     font-family: var(--font-sub), serif;
     padding-left: var(--size-5);

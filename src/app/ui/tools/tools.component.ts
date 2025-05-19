@@ -1,5 +1,6 @@
 import { afterNextRender, Component, ElementRef, ViewChild } from '@angular/core';
 import { MatterService } from "../../../../libs/matter/matter.service";
+import Matter from "matter-js";
 
 @Component( {
     selector: 'app-tools',
@@ -12,6 +13,8 @@ export class ToolsComponent {
     @ViewChild( 'canvas' )
     canvas: ElementRef<HTMLCanvasElement> | undefined;
 
+    private circles: Matter.Body[] = [];
+
     constructor( private matterService: MatterService ) {
 
         afterNextRender( () => {
@@ -20,35 +23,42 @@ export class ToolsComponent {
             matterService.createBodies();
             matterService.runRender();
             matterService.runEngine();
-            // window.scrollTo( 0, document.body.scrollHeight );
 
-            tools.forEach((tool, index) => {
-                setTimeout( () => {
-                    const image = new Image();
-                    image.onload = () => {
-                        const body = this.matterService.createCircle( this.matterService.canvasWidth, 0, this.matterService.canvasWidth / 26, {
-                            restitution: 0.59,
-                            frictionAir: 0.001,
-                            density: 0.01,
+            tools.forEach( ( tool, index ) => {
+                const image = new Image();
+                image.onload = () => {
+                    const baseSize = 40;
+                    const canvasWidth = this.matterService.canvasWidth;
+                    const scaledSize = canvasWidth / 26;
+
+
+                    const body = this.matterService.createCircle(
+                          Math.random() * (canvasWidth - baseSize) + baseSize,
+                        0,
+                        scaledSize,
+                        {
+                            restitution: 0.8,
                             force: {
-                                x: this.matterService.canvasWidth / 26 /-40,
-                                y: 0
+                                x: 0,
+                                y: 0.1
                             },
                             render: {
                                 sprite: {
                                     texture: image.src,
-                                    xScale: this.matterService.canvasWidth / 26 / 20,
-                                    yScale: this.matterService.canvasWidth / 26 / 20
+                                    xScale: scaledSize / 20,
+                                    yScale: scaledSize / 20
                                 }
                             }
                         } );
-                        this.matterService.addBodies( [ body ] )
-                    };
-                    image.src = `/src/assets/logos/logo_${ tool }.png`;
-
-                }, index * 500 )
-            })
+                    this.matterService.prepareBody( body );
+                };
+                image.src = `/src/assets/logos/logo_${ tool }.png`;
+            } )
         } )
+    }
+
+    playAnimation() {
+        this.matterService.addPreparedBodies( 300 );
     }
 }
 

@@ -11,7 +11,17 @@ export class MatterService {
     public runner: Matter.Runner | undefined;
     public canvasRect: DOMRect | undefined;
 
+    private preparedBodies: Matter.Body[] = [];
+
     constructor() {
+    }
+
+    public get canvasHeight() {
+        return this.canvasRect!.height
+    }
+
+    public get canvasWidth() {
+        return this.canvasRect!.width
     }
 
     public init( canvas: HTMLCanvasElement ) {
@@ -28,6 +38,7 @@ export class MatterService {
                 wireframes: false,
             }
         } )
+        this.preparedBodies = [];
 
     }
 
@@ -41,10 +52,17 @@ export class MatterService {
             }
         };
 
+        const width = this.canvasRect!.width;
+        const height = this.canvasRect!.height;
+        const thickness = 10;
+        const exposure = 1;
+        const midWidth = width / 2;
+        const midHeight = height / 2;
+        const calculatedExposure = (thickness / 2) - exposure;
 
-        const ground = Matter.Bodies.rectangle( this.canvasRect!.width / 2 - 2, this.canvasRect!.height + 4, this.canvasRect!.width, 10, options );
-        const leftWall = Matter.Bodies.rectangle( -4, this.canvasRect!.height / 2 - 2, 10, this.canvasRect!.height, options );
-        const rightWall = Matter.Bodies.rectangle( this.canvasRect!.width + 4, this.canvasRect!.height / 2 - 2, 10, this.canvasRect!.height, options );
+        const ground = Matter.Bodies.rectangle( midWidth, height + calculatedExposure, width, thickness, options );
+        const leftWall = Matter.Bodies.rectangle( calculatedExposure * -1, midHeight - exposure * 2, thickness, height, options );
+        const rightWall = Matter.Bodies.rectangle( width + calculatedExposure, midHeight - exposure * 2, thickness, height, options );
         this.addBodies( [ leftWall, rightWall, ground ] );
     }
 
@@ -61,14 +79,21 @@ export class MatterService {
         Matter.Runner.run( this.runner, this.engine! );
     }
 
-    public createCircle(x: number, y: number, radius: number, options?: IBodyDefinition, maxSides?: number) {
-        return Matter.Bodies.circle(x, y, radius, options, maxSides);
+    public createCircle( x: number, y: number, radius: number, options?: IBodyDefinition, maxSides?: number ) {
+        return Matter.Bodies.circle( x, y, radius, options, maxSides );
     }
 
-    public get canvasHeight() {
-        return this.canvasRect!.height
+    prepareBody( body: Matter.Body ) {
+        this.preparedBodies.push( body );
     }
-    public get canvasWidth() {
-        return this.canvasRect!.width
+
+    addPreparedBodies( difference: number ) {
+        this.preparedBodies.forEach( ( body, index ) => {
+            setTimeout( () => {
+                this.addBodies( [ body ] )
+            }, index * difference )
+        } );
+        this.preparedBodies = [];
     }
+
 }
