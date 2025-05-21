@@ -18,34 +18,49 @@
 @forward "styles/size";
 @forward "styles/select";
 
+:root {
+  :where(button, input[type="reset"], .btn) {
+    --_bg-light: #fff;
+    --_bg-dark: var(--surface-3);
+    --_bg: var(--surface-3);
+    --_border: var(--surface-4);
+    --_highlight-light: hsl(var(--gray-5-hsl)/25%);
+    --_highlight-dark: hsl(var(--gray-12-hsl)/25%);
+    --_highlight: var(--_highlight-light);
+    --_ink-shadow-light: 0 1px 0 var(--surface-shadow);
+    --_ink-shadow-dark: 0 1px 0 var(--surface-shadow);
+  }
+}
 
-//@media (prefers-color-scheme: dark) {
-//    button {
-//
-//            all: revert;
-//
-//    }
-//}
+
+app-root {
+  * {
+    display: block;
+  }
+}
 
 html {
-    font-family: var(--font-sub), serif;
-    padding-left: var(--size-5);
-    padding-right: var(--size-5);
+  font-family: var(--font-sub), serif;
 }
 
 body {
+  max-width: var(--size-lg);
+  margin: auto;
+}
 
-    max-width: var(--size-lg);
-    margin: auto;
+router-outlet ~ * {
+  width: 100%;
+  max-width: calc(100vw - var(--size-8));
+  margin: auto;
 }
 
 h1, h2, h3, h4 {
-    font-family: var(--font-title), serif;
-    font-weight: var(--font-weight-bold);
+  font-family: var(--font-title), serif;
+  font-weight: var(--font-weight-bold);
 }
 
 
-@media (prefers-color-scheme: dark), (prefers-color-scheme: light)  {
+@media (prefers-color-scheme: dark), (prefers-color-scheme: light) {
   :where(textarea, select, input:not([type=button], [type=submit], [type=reset])) {
     background-color: var(--surface-1);
   }

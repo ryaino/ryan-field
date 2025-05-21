@@ -9,7 +9,7 @@ import { NavbarComponent } from "./ui/navbar/navbar.component";
   template: `
       @defer {
         <app-navbar></app-navbar>
-          <router-outlet/>
+        <router-outlet/>
       }
   `,
   styles: `

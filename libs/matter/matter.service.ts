@@ -44,6 +44,7 @@ export class MatterService {
 
     createBodies() {
         const options = {
+          isStatic: true
         };
 
         const width = this.canvasRect!.width;

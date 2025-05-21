@@ -28,7 +28,6 @@ export class ToolsComponent {
                     const canvasWidth = this.matterService.canvasWidth;
                     const scaledSize = canvasWidth / 26;
 
-
                     const body = this.matterService.createCircle(
                           Math.random() * (canvasWidth - scaledSize) + scaledSize,
                         0,
