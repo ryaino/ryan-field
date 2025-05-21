@@ -43,13 +43,7 @@ export class MatterService {
     }
 
     createBodies() {
-        let r = document.querySelector( ':root' );
-        let rs = getComputedStyle( r! );
         const options = {
-            isStatic: true,
-            render: {
-                strokeStyle: rs.getPropertyValue( '--brand' )
-            }
         };
 
         const width = this.canvasRect!.width;
@@ -58,11 +52,10 @@ export class MatterService {
         const exposure = 1;
         const midWidth = width / 2;
         const midHeight = height / 2;
-        const calculatedExposure = (thickness / 2) - exposure;
 
-        const ground = Matter.Bodies.rectangle( midWidth, height + calculatedExposure, width, thickness, options );
-        const leftWall = Matter.Bodies.rectangle( calculatedExposure * -1, midHeight - exposure * 2, thickness, height, options );
-        const rightWall = Matter.Bodies.rectangle( width + calculatedExposure, midHeight - exposure * 2, thickness, height, options );
+        const ground = Matter.Bodies.rectangle( midWidth, height + thickness /2, width, thickness, options );
+        const leftWall = Matter.Bodies.rectangle( + thickness /2 * -1, midHeight - exposure * 2, thickness, height, options );
+        const rightWall = Matter.Bodies.rectangle( width + thickness /2, midHeight - exposure * 2, thickness, height, options );
         this.addBodies( [ leftWall, rightWall, ground ] );
     }
 

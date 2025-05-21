@@ -16,6 +16,7 @@
 @forward "styles/borders.css";
 @forward "styles/layout";
 @forward "styles/size";
+@forward "styles/select";
 
 
 //@media (prefers-color-scheme: dark) {
@@ -43,8 +44,15 @@ h1, h2, h3, h4 {
     font-weight: var(--font-weight-bold);
 }
 
-app-root {
-    * {
-        display: block;
-    }
+
+@media (prefers-color-scheme: dark), (prefers-color-scheme: light)  {
+  :where(textarea, select, input:not([type=button], [type=submit], [type=reset])) {
+    background-color: var(--surface-1);
+  }
+  :where(dialog) {
+    background-color: var(--surface-2);
+  }
+  ::placeholder {
+    color: var(--surface-4);
+  }
 }

@@ -1,6 +1,5 @@
 import { afterNextRender, Component, ElementRef, ViewChild } from '@angular/core';
 import { MatterService } from "../../../../libs/matter/matter.service";
-import Matter from "matter-js";
 
 @Component( {
     selector: 'app-tools',
@@ -13,8 +12,6 @@ export class ToolsComponent {
     @ViewChild( 'canvas' )
     canvas: ElementRef<HTMLCanvasElement> | undefined;
 
-    private circles: Matter.Body[] = [];
-
     constructor( private matterService: MatterService ) {
 
         afterNextRender( () => {
@@ -24,23 +21,23 @@ export class ToolsComponent {
             matterService.runRender();
             matterService.runEngine();
 
-            tools.forEach( ( tool, index ) => {
+            tools.forEach( ( tool ) => {
                 const image = new Image();
                 image.onload = () => {
-                    const baseSize = 40;
+
                     const canvasWidth = this.matterService.canvasWidth;
                     const scaledSize = canvasWidth / 26;
 
 
                     const body = this.matterService.createCircle(
-                          Math.random() * (canvasWidth - baseSize) + baseSize,
+                          Math.random() * (canvasWidth - scaledSize) + scaledSize,
                         0,
                         scaledSize,
                         {
                             restitution: 0.8,
                             force: {
                                 x: 0,
-                                y: 0.1
+                                y: canvasWidth / 1024 * 0.01
                             },
                             render: {
                                 sprite: {

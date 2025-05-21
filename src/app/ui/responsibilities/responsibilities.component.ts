@@ -16,7 +16,7 @@ export class ResponsibilitiesComponent {
     responsibilities = [
         {
             emote: "matPeopleAltRound",
-            heading: "Stakeholder Management",
+            heading: "Stakeholder Engagement",
             text: `Whether it's client requests or internal roadmaps, I can work with stakeholders to transform their
                     ideas into technical plans that are ready to develop.`
         },

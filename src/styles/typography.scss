@@ -5,6 +5,10 @@
     --font-sub: 'Lora', serif;
 }
 
+label {
+  font-family: var(--font-title), serif;
+}
+
 .text-brand {
     color: var(--brand);
 }

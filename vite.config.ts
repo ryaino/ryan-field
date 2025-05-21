@@ -9,7 +9,8 @@ export default defineConfig(({ mode }) => ({
     target: ['es2020'],
   },
   server: {
-    host: true
+    host: '0.0.0.0',
+    allowedHosts: ['3d51-101-53-218-201.ngrok-free.app']
   },
   resolve: {
     mainFields: ['module'],
