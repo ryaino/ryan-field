@@ -57,6 +57,7 @@
     "postcss-custom-media": "^11.0.5",
     "postcss-load-config": "^6.0.1",
     "postcss-plugin": "^1.0.0",
+    "prettier": "3.5.3",
     "schematics-scss-migrate": "^2.3.17",
     "storybook": "^8.6.12",
     "typescript": "~5.8.0",

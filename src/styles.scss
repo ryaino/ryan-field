@@ -1,4 +1,5 @@
 @forward "styles/typography";
+@use "prismjs/themes/prism-twilight.css";
 /* the props */
 @forward "open-props/style";
 @forward "open-props/media";
@@ -11,32 +12,27 @@
 
 @forward 'styles/variables';
 @forward "styles/themes/themes";
-@forward "styles/surfaces.css";
+@forward "styles/surfaces";
 @forward "styles/shadows";
 @forward "styles/borders.css";
 @forward "styles/layout";
 @forward "styles/size";
+@forward "styles/button";
 @forward "styles/select";
+@forward "styles/pages";
 
 :root {
-  :where(button, input[type="reset"], .btn) {
-    --_bg-light: #fff;
-    --_bg-dark: var(--surface-3);
-    --_bg: var(--surface-3);
-    --_border: var(--surface-4);
-    --_highlight-light: hsl(var(--gray-5-hsl)/25%);
-    --_highlight-dark: hsl(var(--gray-12-hsl)/25%);
-    --_highlight: var(--_highlight-light);
-    --_ink-shadow-light: 0 1px 0 var(--surface-shadow);
-    --_ink-shadow-dark: 0 1px 0 var(--surface-shadow);
-  }
-}
 
+}
 
 app-root {
   * {
     display: block;
   }
+}
+
+a {
+  display: inline;
 }
 
 html {

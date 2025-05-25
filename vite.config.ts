@@ -10,7 +10,7 @@ export default defineConfig(({ mode }) => ({
   },
   server: {
     host: '0.0.0.0',
-    allowedHosts: ['3d51-101-53-218-201.ngrok-free.app']
+    allowedHosts: ['87d3-101-53-218-201.ngrok-free.app']
   },
   resolve: {
     mainFields: ['module'],

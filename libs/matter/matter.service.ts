@@ -55,8 +55,8 @@ export class MatterService {
         const midHeight = height / 2;
 
         const ground = Matter.Bodies.rectangle( midWidth, height + thickness /2, width, thickness, options );
-        const leftWall = Matter.Bodies.rectangle( + thickness /2 * -1, midHeight - exposure * 2, thickness, height, options );
-        const rightWall = Matter.Bodies.rectangle( width + thickness /2, midHeight - exposure * 2, thickness, height, options );
+        const leftWall = Matter.Bodies.rectangle( thickness /2 * -1, midHeight - exposure * 2, thickness, height, options );
+        const rightWall = Matter.Bodies.rectangle( width + thickness / 2 + 1, midHeight - exposure * 2, thickness, height, options );
         this.addBodies( [ leftWall, rightWall, ground ] );
     }
 

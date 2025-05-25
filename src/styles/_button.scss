@@ -1,0 +1,21 @@
+@use "surfaces";
+@use "typography";
+@use "shadows";
+
+button {
+  @extend .font-title;
+  font-weight: var(--font-weight-6);
+  border: none;
+  box-shadow:
+    var(--shadow-2),
+    0 1px var(--btn-shadow),
+    0 0 0 var(--_highlight-size) var(--_highlight);
+  text-shadow: var(--shadow-2);
+  transition: all 0.2s var(--ease-4);
+
+  &:active {
+    box-shadow: none;
+    text-shadow: none;
+    transform: scale(0.8);
+  }
+}

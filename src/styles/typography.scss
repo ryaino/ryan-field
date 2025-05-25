@@ -32,6 +32,10 @@ label {
     font-weight: var(--font-weight-6);
 }
 
+.bold {
+  @extend .weight-6;
+}
+
 .text-center {
     text-align: center;
 }

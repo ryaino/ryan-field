@@ -1,0 +1,13 @@
+app-home {
+  .home-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--size-8);
+
+    h2 {
+      font-weight: var(--font-weight-6);
+      text-align: center;
+    }
+  }
+}

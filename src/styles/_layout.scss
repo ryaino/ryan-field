@@ -27,6 +27,13 @@
   margin: auto;
 }
 
+.centered-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
 
 @each $value in variables.$justify-content {
   .jc-#{$value} {
