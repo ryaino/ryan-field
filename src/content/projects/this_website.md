@@ -9,4 +9,12 @@ coverImage: https://images.unsplash.com/photo-1493612276216-ee3925520721?ixlib=r
 
 Analog is a meta-framework for Angular.
 
+```
+  {
+     "firstName": "John",
+      "lastName": "Smith",
+      "age": 25
+  }
+```
+
 [Back Home](./)

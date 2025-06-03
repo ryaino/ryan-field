@@ -9,6 +9,7 @@ import { ProjectsListComponent } from './components/projects-list/projects-list.
     <app-projects-header></app-projects-header>
     <hr />
     <app-projects-list></app-projects-list>
+    <hr />
   `,
   styles: ``,
   imports: [ProjectsHeaderComponent, ProjectsListComponent],

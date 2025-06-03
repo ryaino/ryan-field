@@ -1,14 +1,27 @@
-<nav class="flex jc-space-between align-items-center width-100">
-  <div class="text-1 weight-6 font-size-5 font-title">
-    Ryan Field
+<!--<nav class="flex jc-space-between align-items-center width-100">-->
+<!--  <div class="text-1 weight-6 font-size-5 font-title">Ryan Field</div>-->
+<!--  <span class="flex align-items-center gap-2 height-100">-->
+<!--    <label class="weight-6" for="theme">Theme: </label>-->
+<!--    <select [formControl]="theme" class="weight-6" name="themes">-->
+<!--      <option value="blue-ice">blue-ice</option>-->
+<!--      <option value="strawberry">strawberry</option>-->
+<!--      <option value="grape">grape</option>-->
+<!--      <option value="lime">lime</option>-->
+<!--    </select>-->
+<!--  </span>-->
+<!--</nav>-->
+
+<nav>
+  <input id="check" type="checkbox" [formControl]="checkbox" />
+  <label class="checkbtn" for="check">
+    <ng-icon name="matMenuRound"></ng-icon>
+  </label>
+  <div [ngClass]="checkboxValue()  ? 'slide-in-right' : 'slide-out-left' " class="nav-mobile">
+    <label class="checkbtn" for="check">
+      <ng-icon name="matMenuRound"></ng-icon>
+    </label>
+    <a routerLink="/">Home</a>
+    <a routerLink="/projects">Projects</a>
+    <a routerLink="/theme">Theme</a>
   </div>
-  <span class="flex align-items-center gap-2 height-100">
-    <label for="theme" class="weight-6">Theme: </label>
-      <select [formControl]="theme" name="themes" class="weight-6">
-        <option value="blue-ice">blue-ice</option>
-        <option value="strawberry">strawberry</option>
-        <option value="grape">grape</option>
-        <option value="lime">lime</option>
-      </select>
-  </span>
 </nav>

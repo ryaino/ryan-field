@@ -10,7 +10,7 @@ export default defineConfig(({ mode }) => ({
   },
   server: {
     host: '0.0.0.0',
-    allowedHosts: ['af78-101-53-218-201.ngrok-free.app'],
+    allowedHosts: true,
   },
   resolve: {
     mainFields: ['module'],
@@ -30,7 +30,7 @@ export default defineConfig(({ mode }) => ({
       },
       prerender: {
         routes: async () => [
-          '/',
+          '/**',
           'projects',
           {
             contentDir: 'src/content/projects',
