@@ -1,6 +1,87 @@
 {
     "pipes": [],
-    "interfaces": [],
+    "interfaces": [
+        {
+            "name": "ProjectAttributes",
+            "id": "interface-ProjectAttributes-d1dfb0759c68bdc6135a5fa6511b49c90723fa7787871bbc6f68462620f63768d8e76a028e427a8760d70297e1b43e846dbc43f6420a24afe86c999c53c1efeb",
+            "file": "src/app/pages/(projects)/models/project.attributes.model.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface ProjectAttributes {\n  title: string;\n  slug: string;\n  description: string;\n  coverImage: string;\n}\n",
+            "properties": [
+                {
+                    "name": "coverImage",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "description",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "slug",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "title",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "User",
+            "id": "interface-User-d4821beac0e4a852e513391b7470981c4353fdd95a18628bb68136c8695b489ee15b926e2e5031bc26cf30e1508e0a362c3ee13a06734702b4d15af140e485d5",
+            "file": "src/stories/user.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface User {\n  name: string;\n}\n",
+            "properties": [
+                {
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        }
+    ],
     "injectables": [],
     "guards": [],
     "interceptors": [],
@@ -9,7 +90,7 @@
     "components": [
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-4100b8d71276bb7523aff72898a73bb3ea44aa7466bc37d0c4f588dec389eb89c44444c691ed4a584f6cebff4ace947c75cf7417308a983d50a2a1fe1264e09d",
+            "id": "component-AppComponent-cf0530a162f51157b00ced31e67eaf0814481cdb7bd5491eee89c930b75fb60e944a350b33a99c625c47157152f3dd2e4f04ce00c2da02a6d54a901818661427",
             "file": "src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -21,7 +102,7 @@
             "styles": [
                 "\n  "
             ],
-            "template": "<router-outlet />\n",
+            "template": "@defer {\n  <app-navbar></app-navbar>\n  <router-outlet/>\n}\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -37,20 +118,324 @@
             "imports": [
                 {
                     "name": "RouterOutlet"
+                },
+                {
+                    "name": "NavbarComponent",
+                    "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { RouterOutlet } from '@angular/router';\n\n@Component({\n  selector: 'app-root',\n  standalone: true,\n  imports: [ RouterOutlet ],\n  template: `\n    <router-outlet />\n  `,\n  styles: `\n  `,\n})\nexport class AppComponent {}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { RouterOutlet } from '@angular/router';\nimport { NavbarComponent } from \"./ui/navbar/navbar.component\";\n\n@Component({\n  selector: 'app-root',\n  standalone: true,\n  imports: [ RouterOutlet, NavbarComponent ],\n  template: `\n      @defer {\n        <app-navbar></app-navbar>\n        <router-outlet/>\n      }\n  `,\n  styles: `\n  `,\n})\nexport class AppComponent {}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "\n  \n",
             "extends": []
         },
         {
+            "name": "ButtonComponent",
+            "id": "component-ButtonComponent-d7bf0323e6da130e2609e2af0117b4a8d7cd874132206af50bf43dfc37044485fe50f2867ea76525730dd195b9b95a43802a12dadc6ad5cd7bf2faa07f19f0da",
+            "file": "src/stories/button.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-button",
+            "styleUrls": [
+                "./button.css"
+            ],
+            "styles": [],
+            "template": " <button  type=\"button\"\n  (click)=\"onClick.emit($event)\"\n  [ngClass]=\"classes\"\n  [ngStyle]=\"{ 'background-color': backgroundColor }\"\n>\n  {{ label }}\n</button>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "backgroundColor",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nWhat background color to use",
+                    "description": "<p>What background color to use</p>\n",
+                    "line": 25,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "'Button'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "pos": 760,
+                            "end": 773,
+                            "kind": 327,
+                            "id": 0,
+                            "flags": 16842752,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "tagName": {
+                                "pos": 761,
+                                "end": 769,
+                                "kind": 80,
+                                "id": 0,
+                                "flags": 16842752,
+                                "transformFlags": 0,
+                                "escapedText": "required"
+                            },
+                            "comment": ""
+                        }
+                    ],
+                    "rawdescription": "\n\nButton contents\n\n",
+                    "description": "<p>Button contents</p>\n",
+                    "line": 37,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "primary",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nIs this the principal call to action on the page?",
+                    "description": "<p>Is this the principal call to action on the page?</p>\n",
+                    "line": 21,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "'medium'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nHow large should the button be?",
+                    "description": "<p>How large should the button be?</p>\n",
+                    "line": 29,
+                    "type": "\"small\" | \"medium\" | \"large\"",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onClick",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nOptional click handler",
+                    "description": "<p>Optional click handler</p>\n",
+                    "line": 41,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-button',\n  standalone: true,\n  imports: [CommonModule],\n  template: ` <button\n  type=\"button\"\n  (click)=\"onClick.emit($event)\"\n  [ngClass]=\"classes\"\n  [ngStyle]=\"{ 'background-color': backgroundColor }\"\n>\n  {{ label }}\n</button>`,\n  styleUrls: ['./button.css'],\n})\nexport class ButtonComponent {\n  /** Is this the principal call to action on the page? */\n  @Input()\n  primary = false;\n\n  /** What background color to use */\n  @Input()\n  backgroundColor?: string;\n\n  /** How large should the button be? */\n  @Input()\n  size: 'small' | 'medium' | 'large' = 'medium';\n\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input()\n  label = 'Button';\n\n  /** Optional click handler */\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  public get classes(): string[] {\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\n\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".storybook-button {\n  display: inline-block;\n  cursor: pointer;\n  border: 0;\n  border-radius: 3em;\n  font-weight: 700;\n  line-height: 1;\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n}\n.storybook-button--primary {\n  background-color: #555ab9;\n  color: white;\n}\n.storybook-button--secondary {\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;\n  background-color: transparent;\n  color: #333;\n}\n.storybook-button--small {\n  padding: 10px 16px;\n  font-size: 12px;\n}\n.storybook-button--medium {\n  padding: 11px 20px;\n  font-size: 14px;\n}\n.storybook-button--large {\n  padding: 12px 24px;\n  font-size: 16px;\n}\n",
+                    "styleUrl": "./button.css"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "accessors": {
+                "classes": {
+                    "name": "classes",
+                    "getSignature": {
+                        "name": "classes",
+                        "type": "[]",
+                        "returnType": "string[]",
+                        "line": 43
+                    }
+                }
+            }
+        },
+        {
+            "name": "CardComponent",
+            "id": "component-CardComponent-4f670a164f40d5328a6a5b5002bf903b2c2b0d94f8deab47023a03ff89488f4048f4a849083f953909c7eadb281c597193540be18148815454ff4f808ba1b673",
+            "file": "src/app/ui/card/card.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-card",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./card.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-card',\n  imports: [],\n  templateUrl: './card.component.html',\n  styleUrl: './card.component.scss',\n})\nexport class CardComponent {\n\n}\n",
+            "styleUrl": "./card.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<ng-content>\n\n</ng-content>\n"
+        },
+        {
+            "name": "FooterComponent",
+            "id": "component-FooterComponent-c25659bc86bbfd66ad27731030c51cfdb572f29a4e543713867c087d093b2a4e8664f36a0d204ad043e92e9955e85d1c87154874e2f7d9abcef340d64b96efc8",
+            "file": "src/app/ui/footer/footer.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-footer",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./footer.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "RouterLink"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport {RouterLink} from \"@angular/router\";\n\n@Component({\n  selector: 'app-footer',\n  imports: [\n    RouterLink\n  ],\n  templateUrl: './footer.component.html',\n  styleUrl: './footer.component.scss'\n})\nexport class FooterComponent {\n\n}\n",
+            "styleUrl": "./footer.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<section class=\"home-section\">\n  <h2>More...</h2>\n  <div class=\"flex-column gap-4\">\n    <p>\n      If you wish to contact me then the best way to reach me is through my\n      <a href=\"https://www.linkedin.com/in/ryan-field-649a1616b/\">LinkedIn</a>.\n    </p>\n    <p class=\"flex-column\">\n      Head over to my projects page to take a look at some of my work.\n    </p>\n  </div>\n  <button class=\"surface-3\" routerLink=\"/projects\">Projects</button>\n</section>\n"
+        },
+        {
+            "name": "HeaderComponent",
+            "id": "component-HeaderComponent-48b9abe37706bc42f20cfa97ed9f943678344ea7d254c0c82183c657750c2191b43486fe730c778627b2ea6aa0e2f33a7abcf3ce08b68ad18b062ad99ea97acb",
+            "file": "src/stories/header.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-header",
+            "styleUrls": [
+                "./header.css"
+            ],
+            "styles": [],
+            "template": "<header>  <div class=\"storybook-header\">\n    <div>\n      <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n        <g fill=\"none\" fillRule=\"evenodd\">\n          <path\n            d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n            fill=\"#FFF\"\n          />\n          <path\n            d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n            fill=\"#555AB9\"\n          />\n          <path d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\" fill=\"#91BAF8\" />\n        </g>\n      </svg>\n      <h1>Acme</h1>\n    </div>\n    <div>\n      <div *ngIf=\"user\">\n        <span class=\"welcome\">\n          Welcome, <b>{{ user.name }}</b\n          >!\n        </span>\n        <storybook-button\n          *ngIf=\"user\"\n          size=\"small\"\n          (onClick)=\"onLogout.emit($event)\"\n          label=\"Log out\"\n        ></storybook-button>\n      </div>\n      <div *ngIf=\"!user\">\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          class=\"margin-left\"\n          (onClick)=\"onLogin.emit($event)\"\n          label=\"Log in\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          [primary]=\"true\"\n          class=\"margin-left\"\n          (onClick)=\"onCreateAccount.emit($event)\"\n          label=\"Sign up\"\n        ></storybook-button>\n      </div>\n    </div>\n  </div>\n</header>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "user",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 66,
+                    "type": "User | null",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onCreateAccount",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 75,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogin",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 69,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogout",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 72,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ButtonComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { ButtonComponent } from './button.component';\nimport type { User } from './user';\n\n@Component({\n  selector: 'storybook-header',\n  standalone: true,\n  imports: [CommonModule, ButtonComponent],\n  template: `<header>\n  <div class=\"storybook-header\">\n    <div>\n      <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n        <g fill=\"none\" fillRule=\"evenodd\">\n          <path\n            d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n            fill=\"#FFF\"\n          />\n          <path\n            d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n            fill=\"#555AB9\"\n          />\n          <path d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\" fill=\"#91BAF8\" />\n        </g>\n      </svg>\n      <h1>Acme</h1>\n    </div>\n    <div>\n      <div *ngIf=\"user\">\n        <span class=\"welcome\">\n          Welcome, <b>{{ user.name }}</b\n          >!\n        </span>\n        <storybook-button\n          *ngIf=\"user\"\n          size=\"small\"\n          (onClick)=\"onLogout.emit($event)\"\n          label=\"Log out\"\n        ></storybook-button>\n      </div>\n      <div *ngIf=\"!user\">\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          class=\"margin-left\"\n          (onClick)=\"onLogin.emit($event)\"\n          label=\"Log in\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          [primary]=\"true\"\n          class=\"margin-left\"\n          (onClick)=\"onCreateAccount.emit($event)\"\n          label=\"Sign up\"\n        ></storybook-button>\n      </div>\n    </div>\n  </div>\n</header>`,\n  styleUrls: ['./header.css'],\n})\nexport class HeaderComponent {\n  @Input()\n  user: User | null = null;\n\n  @Output()\n  onLogin = new EventEmitter<Event>();\n\n  @Output()\n  onLogout = new EventEmitter<Event>();\n\n  @Output()\n  onCreateAccount = new EventEmitter<Event>();\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".storybook-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n  padding: 15px 20px;\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n}\n\n.storybook-header svg {\n  display: inline-block;\n  vertical-align: top;\n}\n\n.storybook-header h1 {\n  display: inline-block;\n  vertical-align: top;\n  margin: 6px 0 6px 10px;\n  font-weight: 700;\n  font-size: 20px;\n  line-height: 1;\n}\n\n.storybook-header button + button {\n  margin-left: 10px;\n}\n\n.storybook-header .welcome {\n  margin-right: 10px;\n  color: #333;\n  font-size: 14px;\n}\n",
+                    "styleUrl": "./header.css"
+                }
+            ],
+            "stylesData": "",
+            "extends": []
+        },
+        {
             "name": "HeroComponent",
-            "id": "component-HeroComponent-0947db4463cb7b7ce16aba7c9f9c4c994fc2d88af2c8b1a0400cde6816f4059dc1ef1556cc16da86030844f334657ebd6329a92d3ac7ab7e38fc0e092818aff1",
+            "id": "component-HeroComponent-4f74335dd2e1f6bfb8e6e53a68af3cab8c42a04be38cd380a96df12bf0a9c8dd9da86d3f11ff1ab465df63bd3fc0936a2e52726945879172aec8d963764cb677",
             "file": "src/app/ui/hero/hero.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -74,21 +459,25 @@
             "hostBindings": [],
             "hostListeners": [],
             "standalone": false,
-            "imports": [],
+            "imports": [
+                {
+                    "name": "NgOptimizedImage"
+                }
+            ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-hero',\n  imports: [],\n  templateUrl: './hero.component.html',\n  styleUrl: './hero.component.css'\n})\nexport class HeroComponent {\n}\n",
-            "styleUrl": "./hero.component.css",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { NgOptimizedImage } from '@angular/common'\n\n@Component({\n  selector: 'app-hero',\n  imports: [NgOptimizedImage],\n  templateUrl: './hero.component.html',\n  styleUrl: './hero.component.scss'\n})\nexport class HeroComponent {\n}\n",
+            "styleUrl": "./hero.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": ""
+            "templateData": "<section class=\"gap-3 row-above-md jc-space-around align-items-center\">\n    <div class=\"relative image-container ratio-portrait\">\n        <img\n                ngSrc=\"/src/assets/sippin.png\"\n                fill\n                priority\n                class=\"rounded-3 rad-shadow\"\n        >\n    </div>\n\n    <div class=\"gap-3 gap-8_md flex-column jc-center\">\n        <div>\n            <h1 class=\"weight-6\"> Ryan Field </h1>\n            <h2 class=\"text-2\"> Full Stack Developer</h2>\n        </div>\n        <p>\n            I'm a self-motivated developer with over 6 years of experience. No matter the task at hand I always welcome\n            a challenge and I'm not afraid to get my hands dirty with the unfamiliar. There's always an opportunity to\n            learn when developing software and that helps drive me to improve and expand my skill set.\n        </p>\n        <p>\n            I've made this site as an easy way to find out about myself as a developer, as well as a place for me to\n            store and display any projects or techniques I'm working on. As a result of this there may be some out of\n            place or seemingly random things scattered throughout.\n        </p>\n    </div>\n</section>\n"
         },
         {
             "name": "HomeComponent",
-            "id": "component-HomeComponent-e8ff566fff499240f45cc921757dc58bfe1b853eaa74cdcd16882b2fa3345afa6028399e6cc384b3a366ce450d4d036619728b320a9dbb2b19de1561b8a318ff",
+            "id": "component-HomeComponent-3c52ed00be3d3ce97a65e8fc9b6afb48504756b31dadb888926f96d328495b7a2d25533c4655eb571b97170ac3323631f88792f1201304dd46bafe981fef1a0f",
             "file": "src/app/pages/index.page.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -98,9 +487,191 @@
             "selector": "app-home",
             "styleUrls": [],
             "styles": [
-                "\n    .logo {\n      will-change: filter;\n    }\n\n    .logo:hover {\n      filter: drop-shadow(0 0 2em #646cffaa);\n    }\n\n    .read-the-docs > * {\n      color: #fff;\n    }\n\n    @media (prefers-color-scheme: light) {\n      .read-the-docs > * {\n        color: #213547;\n      }\n    }\n  "
+                "\n  "
             ],
-            "template": "<app-hero></app-hero>\n",
+            "template": "<app-hero></app-hero>\n<hr>\n<app-responsibilities></app-responsibilities>\n<hr>\n<app-tools></app-tools>\n<hr>\n<app-footer></app-footer>\n<hr>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "HeroComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "ResponsibilitiesComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "ToolsComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "FooterComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { HeroComponent } from \"../ui/hero/hero.component\";\nimport { ResponsibilitiesComponent } from \"../ui/responsibilities/responsibilities.component\";\nimport { ToolsComponent } from \"../ui/tools/tools.component\";\nimport { FooterComponent } from \"../ui/footer/footer.component\";\nimport { RouteMeta } from \"@analogjs/router\";\n\nexport const routeMeta: RouteMeta = {\n  meta: [\n    {\n      name: 'description',\n      content: 'Description of the page',\n    },\n    {\n      name: 'author',\n      content: 'Analog Team',\n    },\n    {\n      property: 'og:title',\n      content: 'Title of the page',\n    },\n    {\n      property: 'og:description',\n      content: 'Some catchy description',\n    }\n  ],\n};\n\n@Component( {\n  selector: 'app-home',\n  standalone: true,\n  template: `\n    <app-hero></app-hero>\n    <hr>\n    <app-responsibilities></app-responsibilities>\n    <hr>\n    <app-tools></app-tools>\n    <hr>\n    <app-footer></app-footer>\n    <hr>\n  `,\n  styles: `\n  `,\n  imports: [\n    HeroComponent,\n    ResponsibilitiesComponent,\n    ToolsComponent,\n    FooterComponent\n  ]\n})\nexport default class HomeComponent {\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "\n  \n",
+            "extends": []
+        },
+        {
+            "name": "NavbarComponent",
+            "id": "component-NavbarComponent-4c24235dbd766efc1b01aaf27e83e55aeec751e9db8b86c19ef6151687139612adb158df188eb44c1364c1bc4155e770f884de3cf94c32064fae9352cb7e86b7",
+            "file": "src/app/ui/navbar/navbar.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "host": {},
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-navbar",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./navbar.component.html"
+            ],
+            "viewProviders": [
+                {
+                    "name": "provideIcons({ matMenuRound })"
+                }
+            ],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "checkbox",
+                    "defaultValue": "new FormControl(false)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "FormControl<boolean | null>",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 23
+                },
+                {
+                    "name": "checkboxValue",
+                    "defaultValue": "toSignal(this.checkbox.valueChanges)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 24
+                },
+                {
+                    "name": "stateChange",
+                    "defaultValue": "effect(() => {\n    if (this.checkboxValue()) {\n      this.document.body.style.overflow = 'hidden';\n    } else {\n      this.document.body.style.overflow = 'auto';\n    }\n  })",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 26
+                },
+                {
+                    "name": "theme",
+                    "defaultValue": "new FormControl(\n    'blue-ice',\n    Validators.requiredTrue,\n  )",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "FormControl<string | null>",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "ReactiveFormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "NgIcon"
+                },
+                {
+                    "name": "RouterLink"
+                },
+                {
+                    "name": "NgClass"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, effect, Inject } from '@angular/core';\nimport { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';\nimport { NgIcon, provideIcons } from '@ng-icons/core';\nimport { matMenuRound } from '@ng-icons/material-icons/round';\nimport { RouterLink } from '@angular/router';\nimport { DOCUMENT, NgClass } from '@angular/common';\nimport { toSignal } from '@angular/core/rxjs-interop';\n\n@Component({\n  selector: 'app-navbar',\n  imports: [ReactiveFormsModule, NgIcon, RouterLink, NgClass],\n  viewProviders: [provideIcons({ matMenuRound })],\n  templateUrl: './navbar.component.html',\n  styleUrl: './navbar.component.scss',\n  host: { class: 'rad-shadow' },\n})\nexport class NavbarComponent {\n  theme: FormControl<string | null> = new FormControl(\n    'blue-ice',\n    Validators.requiredTrue,\n  );\n\n  checkbox: FormControl<boolean | null> = new FormControl(false);\n  checkboxValue = toSignal(this.checkbox.valueChanges);\n\n  stateChange = effect(() => {\n    if (this.checkboxValue()) {\n      this.document.body.style.overflow = 'hidden';\n    } else {\n      this.document.body.style.overflow = 'auto';\n    }\n  });\n\n  constructor(@Inject(DOCUMENT) private document: Document) {\n    this.theme.valueChanges.subscribe((theme) => {\n      const root = document.documentElement;\n      root.setAttribute('color-scheme', theme!);\n    });\n  }\n}\n",
+            "styleUrl": "./navbar.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "document",
+                        "type": "Document",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 32,
+                "jsdoctags": [
+                    {
+                        "name": "document",
+                        "type": "Document",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "templateData": "<!--<nav class=\"flex jc-space-between align-items-center width-100\">-->\n<!--  <div class=\"text-1 weight-6 font-size-5 font-title\">Ryan Field</div>-->\n<!--  <span class=\"flex align-items-center gap-2 height-100\">-->\n<!--    <label class=\"weight-6\" for=\"theme\">Theme: </label>-->\n<!--    <select [formControl]=\"theme\" class=\"weight-6\" name=\"themes\">-->\n<!--      <option value=\"blue-ice\">blue-ice</option>-->\n<!--      <option value=\"strawberry\">strawberry</option>-->\n<!--      <option value=\"grape\">grape</option>-->\n<!--      <option value=\"lime\">lime</option>-->\n<!--    </select>-->\n<!--  </span>-->\n<!--</nav>-->\n\n<nav>\n  <input id=\"check\" type=\"checkbox\" [formControl]=\"checkbox\" />\n  <label class=\"checkbtn\" for=\"check\">\n    <ng-icon name=\"matMenuRound\"></ng-icon>\n  </label>\n  <div [ngClass]=\"checkboxValue()  ? 'slide-in-right' : 'slide-out-left' \" class=\"nav-mobile\">\n    <label class=\"checkbtn\" for=\"check\">\n      <ng-icon name=\"matMenuRound\"></ng-icon>\n    </label>\n    <a routerLink=\"/\">Home</a>\n    <a routerLink=\"/projects\">Projects</a>\n    <a routerLink=\"/theme\">Theme</a>\n  </div>\n</nav>\n"
+        },
+        {
+            "name": "PageComponent",
+            "id": "component-PageComponent-21dd6eb370b4983b5c21c84d40e6f54d266a9d9af9889e6e76b35c43058bd53b3e451bad089d5adf4bea46647ba10265a2fa8cb15630398e75636307d4817fc6",
+            "file": "src/stories/page.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-page",
+            "styleUrls": [
+                "./page.css"
+            ],
+            "styles": [],
+            "template": "<article>  <storybook-header\n    [user]=\"user\"\n    (onLogout)=\"doLogout()\"\n    (onLogin)=\"doLogin()\"\n    (onCreateAccount)=\"doCreateAccount()\"\n  ></storybook-header>\n  <section class=\"storybook-page\">\n    <h2>Pages in Storybook</h2>\n    <p>\n      We recommend building UIs with a\n      <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n        <strong>component-driven</strong>\n      </a>\n      process starting with atomic components and ending with pages.\n    </p>\n    <p>\n      Render pages with mock data. This makes it easy to build and review page states without\n      needing to navigate to them in your app. Here are some handy patterns for managing page data\n      in Storybook:\n    </p>\n    <ul>\n      <li>\n        Use a higher-level connected component. Storybook helps you compose such data from the\n        \"args\" of child component stories\n      </li>\n      <li>\n        Assemble data in the page component from your services. You can mock these services out\n        using Storybook.\n      </li>\n    </ul>\n    <p>\n      Get a guided tutorial on component-driven development at\n      <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\n        Storybook tutorials\n      </a>\n      . Read more in the\n      <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\n      .\n    </p>\n    <div class=\"tip-wrapper\">\n      <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n      <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n        <g fill=\"none\" fillRule=\"evenodd\">\n          <path\n            d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n            id=\"a\"\n            fill=\"#999\"\n          />\n        </g>\n      </svg>\n      Viewports addon in the toolbar\n    </div>\n  </section>\n</article>",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -108,25 +679,45 @@
             "outputsClass": [],
             "propertiesClass": [
                 {
-                    "name": "count",
-                    "defaultValue": "signal(0)",
+                    "name": "user",
+                    "defaultValue": "null",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "",
+                    "type": "User | null",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 34
+                    "line": 69
                 }
             ],
             "methodsClass": [
                 {
-                    "name": "increment",
+                    "name": "doCreateAccount",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 36,
+                    "line": 79,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "doLogin",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 75,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "doLogout",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 71,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -138,22 +729,337 @@
             "standalone": true,
             "imports": [
                 {
-                    "name": "HeroComponent",
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "HeaderComponent",
                     "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, signal } from '@angular/core';\nimport { HeroComponent } from \"../ui/hero/hero.component\";\n\n@Component( {\n  selector: 'app-home',\n  standalone: true,\n  template: `\n    <app-hero></app-hero>\n  `,\n  styles: `\n    .logo {\n      will-change: filter;\n    }\n\n    .logo:hover {\n      filter: drop-shadow(0 0 2em #646cffaa);\n    }\n\n    .read-the-docs > * {\n      color: #fff;\n    }\n\n    @media (prefers-color-scheme: light) {\n      .read-the-docs > * {\n        color: #213547;\n      }\n    }\n  `,\n  imports: [\n    HeroComponent\n  ]\n})\nexport default class HomeComponent {\n  count = signal(0);\n\n  increment() {\n    this.count.update((count) => count + 1);\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { HeaderComponent } from './header.component';\nimport type { User } from './user';\n\n@Component({\n  selector: 'storybook-page',\n  standalone: true,\n  imports: [CommonModule, HeaderComponent],\n  template: `<article>\n  <storybook-header\n    [user]=\"user\"\n    (onLogout)=\"doLogout()\"\n    (onLogin)=\"doLogin()\"\n    (onCreateAccount)=\"doCreateAccount()\"\n  ></storybook-header>\n  <section class=\"storybook-page\">\n    <h2>Pages in Storybook</h2>\n    <p>\n      We recommend building UIs with a\n      <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n        <strong>component-driven</strong>\n      </a>\n      process starting with atomic components and ending with pages.\n    </p>\n    <p>\n      Render pages with mock data. This makes it easy to build and review page states without\n      needing to navigate to them in your app. Here are some handy patterns for managing page data\n      in Storybook:\n    </p>\n    <ul>\n      <li>\n        Use a higher-level connected component. Storybook helps you compose such data from the\n        \"args\" of child component stories\n      </li>\n      <li>\n        Assemble data in the page component from your services. You can mock these services out\n        using Storybook.\n      </li>\n    </ul>\n    <p>\n      Get a guided tutorial on component-driven development at\n      <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\n        Storybook tutorials\n      </a>\n      . Read more in the\n      <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\n      .\n    </p>\n    <div class=\"tip-wrapper\">\n      <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n      <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n        <g fill=\"none\" fillRule=\"evenodd\">\n          <path\n            d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n            id=\"a\"\n            fill=\"#999\"\n          />\n        </g>\n      </svg>\n      Viewports addon in the toolbar\n    </div>\n  </section>\n</article>`,\n  styleUrls: ['./page.css'],\n})\nexport class PageComponent {\n  user: User | null = null;\n\n  doLogout() {\n    this.user = null;\n  }\n\n  doLogin() {\n    this.user = { name: 'Jane Doe' };\n  }\n\n  doCreateAccount() {\n    this.user = { name: 'Jane Doe' };\n  }\n}\n",
             "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "\n    .logo {\n      will-change: filter;\n    }\n\n    .logo:hover {\n      filter: drop-shadow(0 0 2em #646cffaa);\n    }\n\n    .read-the-docs > * {\n      color: #fff;\n    }\n\n    @media (prefers-color-scheme: light) {\n      .read-the-docs > * {\n        color: #213547;\n      }\n    }\n  \n",
+            "styleUrlsData": [
+                {
+                    "data": ".storybook-page {\n  margin: 0 auto;\n  padding: 48px 20px;\n  max-width: 600px;\n  color: #333;\n  font-size: 14px;\n  line-height: 24px;\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n}\n\n.storybook-page h2 {\n  display: inline-block;\n  vertical-align: top;\n  margin: 0 0 4px;\n  font-weight: 700;\n  font-size: 32px;\n  line-height: 1;\n}\n\n.storybook-page p {\n  margin: 1em 0;\n}\n\n.storybook-page a {\n  color: inherit;\n}\n\n.storybook-page ul {\n  margin: 1em 0;\n  padding-left: 30px;\n}\n\n.storybook-page li {\n  margin-bottom: 8px;\n}\n\n.storybook-page .tip {\n  display: inline-block;\n  vertical-align: top;\n  margin-right: 10px;\n  border-radius: 1em;\n  background: #e7fdd8;\n  padding: 4px 12px;\n  color: #357a14;\n  font-weight: 700;\n  font-size: 11px;\n  line-height: 12px;\n}\n\n.storybook-page .tip-wrapper {\n  margin-top: 40px;\n  margin-bottom: 40px;\n  font-size: 13px;\n  line-height: 20px;\n}\n\n.storybook-page .tip-wrapper svg {\n  display: inline-block;\n  vertical-align: top;\n  margin-top: 3px;\n  margin-right: 4px;\n  width: 12px;\n  height: 12px;\n}\n\n.storybook-page .tip-wrapper svg path {\n  fill: #1ea7fd;\n}\n",
+                    "styleUrl": "./page.css"
+                }
+            ],
+            "stylesData": "",
             "extends": []
         },
         {
+            "name": "ProjectDetailsPage",
+            "id": "component-ProjectDetailsPage-3882054cde0430a3c95714c043914d318d1cbb3272e78ef35bec28bd64cedcd88d5be76eca5e185276b11c6d0745baea2737d31baefb42fdea137fac37b733b3",
+            "file": "src/app/pages/(projects)/projects.[slug].page.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-project-details",
+            "styleUrls": [],
+            "styles": [
+                ""
+            ],
+            "template": "@if (post | async; as post) {   {{ post.attributes.title }}\n   <analog-markdown [content]=\"post.content\" />\n }",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "post",
+                    "defaultValue": "injectContent<ProjectAttributes>({\n    param: 'slug',\n    subdirectory: 'projects',\n  })",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 19,
+                    "modifierKind": [
+                        148
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 26,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "MarkdownComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "AsyncPipe",
+                    "type": "pipe"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { ProjectAttributes } from './models/project.attributes.model';\nimport { injectContent, MarkdownComponent } from '@analogjs/content';\nimport { Meta } from '@angular/platform-browser';\nimport { AsyncPipe } from '@angular/common';\n\n@Component({\n  selector: 'app-project-details',\n  imports: [MarkdownComponent, AsyncPipe],\n  standalone: true,\n  template: ` @if (post | async; as post) {\n    {{ post.attributes.title }}\n    <analog-markdown [content]=\"post.content\" />\n  }`,\n\n  styles: ``,\n})\nexport default class ProjectDetailsPage implements OnInit {\n  readonly post = injectContent<ProjectAttributes>({\n    param: 'slug',\n    subdirectory: 'projects',\n  });\n\n  constructor(private meta: Meta) {}\n\n  ngOnInit(): void {\n    this.post\n      .forEach((x) => {\n        this.meta.updateTag({\n          name: `og:url`,\n          content: `https://localhost:5173/projects/${x.attributes.slug}`,\n        });\n        this.meta.updateTag({\n          name: `og:title`,\n          content: `Ryan Field - Project | ${x.attributes.title}`,\n        });\n        this.meta.updateTag({\n          name: `og:description`,\n          content: `${x.attributes.description}`,\n        });\n        this.meta.updateTag({\n          name: `twitter:title`,\n          content: `Ryan Field - Project | ${x.attributes.title}`,\n        });\n      });\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "meta",
+                        "type": "Meta",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 22,
+                "jsdoctags": [
+                    {
+                        "name": "meta",
+                        "type": "Meta",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "implements": [
+                "OnInit"
+            ]
+        },
+        {
+            "name": "ProjectsHeaderComponent",
+            "id": "component-ProjectsHeaderComponent-e183fd87c4a1714520a4b56294348e0055f976f84fbb245149cb66c02834821625e6447b280162884468dbdc46df38a15907eb5c301f05b5ff355f72ad70e753",
+            "file": "src/app/pages/(projects)/components/projects-header/projects-header.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-projects-header",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./projects-header.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-projects-header',\n  imports: [],\n  templateUrl: './projects-header.component.html',\n  styleUrl: './projects-header.component.scss'\n})\nexport class ProjectsHeaderComponent {\n\n}\n",
+            "styleUrl": "./projects-header.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<header class=\"centered-column gap-4\">\n  <h2 class=\"bold\">Projects</h2>\n  <p class=\"text-center\">\n    Here's a list of some of my projects that I want to show off. There's a\n    pretty wide range of things to expect here such as older repositories,\n    currently live production sites, or even small demos hosted here. In any\n    case you'll be able to find detailed explanations of everything, including\n    languages, frameworks and techniques used, alongside any extra thoughts or\n    key takeaways from myself.\n  </p>\n</header>\n"
+        },
+        {
+            "name": "ProjectsListComponent",
+            "id": "component-ProjectsListComponent-43c0b19b926b9810c82398c6e6b260de11862a1c7f3f667e2996f22afd16130c3527c0a996af96b32db0d1689f8ba6d926c93dae0859b4a7c0d0244571e69d02",
+            "file": "src/app/pages/(projects)/components/projects-list/projects-list.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-projects-list",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./projects-list.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "posts",
+                    "defaultValue": "injectContentFiles<ProjectAttributes>((contentFile) =>\n    contentFile.filename.includes('/src/content/projects/'),\n  )",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 14,
+                    "modifierKind": [
+                        148
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "RouterLink"
+                },
+                {
+                    "name": "NgForOf"
+                },
+                {
+                    "name": "NgOptimizedImage"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { injectContentFiles } from '@analogjs/content';\nimport { RouterLink } from '@angular/router';\nimport { NgForOf, NgOptimizedImage } from '@angular/common';\nimport { ProjectAttributes } from '../../models/project.attributes.model';\n\n@Component({\n  selector: 'app-projects-list',\n  imports: [RouterLink, NgForOf, NgOptimizedImage],\n  templateUrl: './projects-list.component.html',\n  styleUrl: './projects-list.component.scss',\n})\nexport class ProjectsListComponent {\n  readonly posts = injectContentFiles<ProjectAttributes>((contentFile) =>\n    contentFile.filename.includes('/src/content/projects/'),\n  );\n}\n",
+            "styleUrl": "./projects-list.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<ul>\n  <li *ngFor=\"let post of posts\">\n    <a [routerLink]=\"['/projects', post.slug]\"> {{ post.attributes.title }} </a>\n    <img [ngSrc]=\"post.attributes.coverImage\" width=\"80\" height=\"80\">\n  </li>\n</ul>\n"
+        },
+        {
+            "name": "ProjectsPage",
+            "id": "component-ProjectsPage-e26899b46a31b84e62c5011ae3d578cb3882362163851c6ff173738aa652be6579e6ede48d3bd66a18a65df83d3843782dfccb5c88fbffdb3ccf2d48f5058748",
+            "file": "src/app/pages/(projects)/projects.page.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-projects",
+            "styleUrls": [],
+            "styles": [
+                ""
+            ],
+            "template": "<app-projects-header></app-projects-header>\n<hr />\n<app-projects-list></app-projects-list>\n<hr />\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "ProjectsHeaderComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "ProjectsListComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { ProjectsHeaderComponent } from './components/projects-header/projects-header.component';\nimport { ProjectsListComponent } from './components/projects-list/projects-list.component';\n\n@Component({\n  selector: 'app-projects',\n  standalone: true,\n  template: `\n    <app-projects-header></app-projects-header>\n    <hr />\n    <app-projects-list></app-projects-list>\n    <hr />\n  `,\n  styles: ``,\n  imports: [ProjectsHeaderComponent, ProjectsListComponent],\n})\nexport default class ProjectsPage {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "\n",
+            "extends": []
+        },
+        {
+            "name": "ResponsibilitiesComponent",
+            "id": "component-ResponsibilitiesComponent-dab790c1a0f9b773964a3207fce4f15d93b4d033436a5fd88266c7d75c2088783574a9b6144b8c24f7f08aaf9df211d833bb773c80b0b65dbf0c998ec31f51fe",
+            "file": "src/app/ui/responsibilities/responsibilities.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-responsibilities",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./responsibilities.component.html"
+            ],
+            "viewProviders": [
+                {
+                    "name": "provideIcons({ matPeopleAltRound, matStorageRound, matCodeRound, matHandshakeRound })"
+                }
+            ],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "responsibilities",
+                    "defaultValue": "[\n        {\n            emote: \"matPeopleAltRound\",\n            heading: \"Stakeholder Engagement\",\n            text: `Whether it's client requests or internal roadmaps, I can work with stakeholders to transform their\n                    ideas into technical plans that are ready to develop.`\n        },\n        {\n            emote: \"matStorageRound\",\n            heading: \"Backend Development\",\n            text: `Creating REST endpoints, database updates, CRON jobs, web scraping or talking to external services.\n                    These are some the tasks I can get done using a variety of languages and frameworks.`\n        },\n        {\n            emote: \"matCodeRound\",\n            heading: \"Frontend Development\",\n            text: `I love creating interactive experiences that solve problems for users. Both customer facing and\n                    internal application work brings me lots of satisfaction.`\n        },\n        {\n            emote: \"matHandshakeRound\",\n            heading: \"Mentoring\",\n            text: `  Remembering what it was like to be a junior myself has motivated me to help in any way I can. I take\n                    the time to teach how to fish rather than hand out the fish.`\n        },\n    ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 16
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [
+                {
+                    "name": "NgIcon"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { NgIcon, provideIcons } from \"@ng-icons/core\";\nimport { matCodeRound, matHandshakeRound, matPeopleAltRound, matStorageRound } from \"@ng-icons/material-icons/round\";\n\n@Component( {\n    selector: 'app-responsibilities',\n    imports: [\n        NgIcon\n    ],\n    viewProviders: [ provideIcons( { matPeopleAltRound, matStorageRound, matCodeRound, matHandshakeRound } ) ],\n    templateUrl: './responsibilities.component.html',\n    styleUrl: './responsibilities.component.scss',\n} )\nexport class ResponsibilitiesComponent {\n\n    responsibilities = [\n        {\n            emote: \"matPeopleAltRound\",\n            heading: \"Stakeholder Engagement\",\n            text: `Whether it's client requests or internal roadmaps, I can work with stakeholders to transform their\n                    ideas into technical plans that are ready to develop.`\n        },\n        {\n            emote: \"matStorageRound\",\n            heading: \"Backend Development\",\n            text: `Creating REST endpoints, database updates, CRON jobs, web scraping or talking to external services.\n                    These are some the tasks I can get done using a variety of languages and frameworks.`\n        },\n        {\n            emote: \"matCodeRound\",\n            heading: \"Frontend Development\",\n            text: `I love creating interactive experiences that solve problems for users. Both customer facing and\n                    internal application work brings me lots of satisfaction.`\n        },\n        {\n            emote: \"matHandshakeRound\",\n            heading: \"Mentoring\",\n            text: `  Remembering what it was like to be a junior myself has motivated me to help in any way I can. I take\n                    the time to teach how to fish rather than hand out the fish.`\n        },\n    ]\n\n\n}\n",
+            "styleUrl": "./responsibilities.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<section class=\"home-section\">\n    <h2>What I do</h2>\n    <div class=\"width-100 container\">\n        @for (responsibility of responsibilities; track responsibility.emote) {\n\n            <div class=\"card rad-shadow surface-2\">\n                <ng-icon [name]=\"responsibility.emote\"/>\n                <div>\n                    <h4>{{ responsibility.heading }}</h4>\n                    <p>\n                        {{ responsibility.text }}\n                    </p>\n                </div>\n            </div>\n        }\n    </div>\n</section>\n"
+        },
+        {
             "name": "ThemeComponent",
-            "id": "component-ThemeComponent-230efc63e9a1dca33125092e0d2c12e8f71dfb2f81a9666c658c373be1649f4e8106ffb566c09dea0bbed89180a99e44ac658d99a2ba08176c5949ec1be16c62",
+            "id": "component-ThemeComponent-187b7bc675b69faf857e412d9f097bd2a22f27259a0a6207990fa9c6e12f8cfeeefeed73f6a82660fd4ff5ec7de9b7460d4439ecebb7d2f9106536288090d5e3",
             "file": "src/app/pages/theme.page.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -163,9 +1069,9 @@
             "selector": "app-theme",
             "styleUrls": [],
             "styles": [
-                "\n        * {\n            box-sizing: border-box;\n            margin: 0;\n        }\n\n        html {\n            block-size: 100%;\n            background-color: var(--surface-1);\n            color: var(--text-1);\n            accent-color: var(--brand);\n        }\n\n        body {\n            min-block-size: 100%;\n            font-family: system-ui, sans-serif;\n            padding: var(--size-6);\n            display: grid;\n            place-content: center;\n            gap: var(--size-6);\n        }\n\n        main {\n            display: flex;\n            flex-flow: row wrap;\n            align-items: center;\n            align-content: center;\n            justify-content: center;\n            gap: var(--size-10);\n        }\n\n        section {\n            display: grid;\n            gap: var(--size-6);\n        }\n\n        h1 {\n        }\n\n        p {\n            max-inline-size: var(--size-content-1);\n            font-size: var(--font-size-4);\n            line-height: var(--font-lineheight-3);\n        }\n\n        header {\n            display: inline-grid;\n            gap: var(--size-3);\n        }\n\n        form {\n            display: flex;\n            gap: var(--size-5);\n\n            & > div {\n                display: inline-flex;\n                align-items: center;\n                gap: var(--size-2);\n            }\n        }\n\n        .surface-samples {\n            display: grid;\n            --size: var(--size-content-1);\n            grid-template-columns: var(--size) var(--size);\n            grid-auto-rows: var(--size);\n            gap: var(--size-5);\n\n            @media (width <= 480px) {\n                & {\n                    --size: 40vw;\n                }\n            }\n\n            & > * {\n                border-radius: var(--radius-3);\n                display: grid;\n                place-content: center;\n                font-size: var(--font-size-8);\n            }\n        }\n\n        .text-samples {\n            display: grid;\n            gap: var(--size-4);\n\n            & > h1 {\n                font-size: var(--font-size-6);\n                display: inline-flex;\n                align-items: center;\n                gap: var(--size-3);\n            }\n        }\n\n        .brand {\n            color: var(--brand);\n            background-color: var(--brand);\n        }\n\n        .surface-1 {\n            background-color: var(--surface-1);\n            color: var(--text-2);\n        }\n\n        .surface-2 {\n            background-color: var(--surface-2);\n            color: var(--text-2);\n        }\n\n        .surface-3 {\n            background-color: var(--surface-3);\n            color: var(--text-1);\n        }\n\n        .surface-4 {\n            background-color: var(--surface-4);\n            color: var(--text-1);\n        }\n\n        .text-1 {\n            color: var(--text-1);\n        }\n\n        .text-2 {\n            color: var(--text-2);\n        }\n\n        .swatch {\n            display: inline-block;\n            flex-shrink: 0;\n            inline-size: var(--size-8);\n            block-size: var(--size-8);\n            border-radius: var(--radius-round);\n\n            &.text-1 {\n                background-color: var(--text-1);\n            }\n\n            &.text-2 {\n                background-color: var(--text-2);\n            }\n        }\n\n        .rad-shadow {\n            box-shadow: 0 1rem .5rem -.5rem;\n            box-shadow: 0 2.8px 2.2px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 3%)),\n            0 6.7px 5.3px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 1%)),\n            0 12.5px 10px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 2%)),\n            0 22.3px 17.9px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 2%)),\n            0 41.8px 33.4px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 3%)),\n            0 100px 80px hsl(var(--surface-shadow) / var(--shadow-strength));\n        }\n    "
+                "\n        * {\n            box-sizing: border-box;\n            margin: 0;\n        }\n\n        html {\n            block-size: 100%;\n            background-color: var(--surface-1);\n            color: var(--text-1);\n            accent-color: var(--brand);\n        }\n\n        body {\n            min-block-size: 100%;\n            font-family: system-ui, sans-serif;\n            padding: var(--size-6);\n            display: grid;\n            place-content: center;\n            gap: var(--size-6);\n        }\n\n        main {\n            display: flex;\n            flex-flow: row wrap;\n            align-items: center;\n            align-content: center;\n            justify-content: center;\n            gap: var(--size-10);\n        }\n\n        section {\n            display: grid;\n            gap: var(--size-6);\n        }\n\n        h1 {\n        }\n\n        p {\n            max-inline-size: var(--size-content-1);\n            font-size: var(--font-size-4);\n            line-height: var(--font-lineheight-3);\n        }\n\n        header {\n            display: inline-grid;\n            gap: var(--size-3);\n        }\n\n        form {\n            display: flex;\n            gap: var(--size-5);\n\n            & > div {\n                display: inline-flex;\n                align-items: center;\n                gap: var(--size-2);\n            }\n        }\n\n        .surface-samples {\n            display: grid;\n            --size: var(--size-content-1);\n            grid-template-columns: var(--size) var(--size);\n            grid-auto-rows: var(--size);\n            gap: var(--size-5);\n\n            @media (width <= 480px) {\n                & {\n                    --size: 40vw;\n                }\n            }\n\n            & > * {\n                border-radius: var(--radius-3);\n                display: grid;\n                place-content: center;\n                font-size: var(--font-size-8);\n            }\n        }\n\n        .text-samples {\n            display: grid;\n            gap: var(--size-4);\n\n            & > h1 {\n                font-size: var(--font-size-6);\n                display: inline-flex;\n                align-items: center;\n                gap: var(--size-3);\n            }\n        }\n\n        .brand {\n            color: var(--brand);\n            background-color: var(--brand);\n        }\n\n\n        .swatch {\n            display: inline-block;\n            flex-shrink: 0;\n            inline-size: var(--size-8);\n            block-size: var(--size-8);\n            border-radius: var(--radius-round);\n\n            &.text-1 {\n                background-color: var(--text-1);\n            }\n\n            &.text-2 {\n                background-color: var(--text-2);\n            }\n        }\n    "
             ],
-            "template": "<main>\n    <section>\n        <div class=\"surface-samples\">\n            <div class=\"surface-1 rad-shadow\">1</div>\n            <div class=\"surface-2 rad-shadow\">2</div>\n            <div class=\"surface-3 rad-shadow\">3</div>\n            <div class=\"surface-4 rad-shadow\">4</div>\n        </div>\n    </section>\n\n    <section>\n        <div class=\"text-samples\">\n            <h1 class=\"text-1\">\n                <span class=\"swatch brand rad-shadow\"></span>\n                Brand\n            </h1>\n            <h1 class=\"text-1\">\n                <span class=\"swatch text-1 rad-shadow\"></span>\n                Text Color 1\n            </h1>\n            <h1 class=\"text-2\">\n                <span class=\"swatch text-2 rad-shadow\"></span>\n                Text Color 2\n            </h1>\n            <br>\n            <p class=\"text-1\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                incididunt ut labore et dolore magna aliqua.</p>\n            <p class=\"text-2\">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip\n                ex ea commodo consequat.</p>\n        </div>\n    </section>\n</main>\n\n<input [formControl]=\"color\" type=\"color\" id=\"body\" name=\"body\"/>\n",
+            "template": "<main>\n    <section>\n        <div class=\"surface-samples\">\n            <div class=\"surface-1 rad-shadow\">1</div>\n            <div class=\"surface-2 rad-shadow\">2</div>\n            <div class=\"surface-3 rad-shadow\">3</div>\n            <div class=\"surface-4 rad-shadow\">4</div>\n        </div>\n    </section>\n\n    <section>\n        <div class=\"text-samples\">\n            <h1 class=\"text-1\">\n                <span class=\"swatch brand rad-shadow\"></span>\n                Brand\n            </h1>\n            <h1 class=\"text-1\">\n                <span class=\"swatch text-1 rad-shadow\"></span>\n                Text Color 1\n            </h1>\n            <h1 class=\"text-2\">\n                <span class=\"swatch text-2 rad-shadow\"></span>\n                Text Color 2\n            </h1>\n            <br>\n            <p class=\"text-1\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                incididunt ut labore et dolore magna aliqua.\n            </p>\n            <p class=\"text-2\">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip\n                ex ea commodo consequat.\n            </p>\n        </div>\n    </section>\n</main>\n\n<input [formControl]=\"color\" type=\"color\" id=\"body\" name=\"body\"/>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -181,7 +1087,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 200,
+                    "line": 165,
                     "modifierKind": [
                         125
                     ]
@@ -202,19 +1108,114 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\r\nimport { FormControl, ReactiveFormsModule } from \"@angular/forms\";\r\n\r\n@Component( {\r\n    selector: 'app-theme',\r\n    standalone: true,\r\n    imports: [ ReactiveFormsModule ],\r\n    template: `\r\n        <main>\r\n            <section>\r\n                <div class=\"surface-samples\">\r\n                    <div class=\"surface-1 rad-shadow\">1</div>\r\n                    <div class=\"surface-2 rad-shadow\">2</div>\r\n                    <div class=\"surface-3 rad-shadow\">3</div>\r\n                    <div class=\"surface-4 rad-shadow\">4</div>\r\n                </div>\r\n            </section>\r\n\r\n            <section>\r\n                <div class=\"text-samples\">\r\n                    <h1 class=\"text-1\">\r\n                        <span class=\"swatch brand rad-shadow\"></span>\r\n                        Brand\r\n                    </h1>\r\n                    <h1 class=\"text-1\">\r\n                        <span class=\"swatch text-1 rad-shadow\"></span>\r\n                        Text Color 1\r\n                    </h1>\r\n                    <h1 class=\"text-2\">\r\n                        <span class=\"swatch text-2 rad-shadow\"></span>\r\n                        Text Color 2\r\n                    </h1>\r\n                    <br>\r\n                    <p class=\"text-1\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\r\n                        incididunt ut labore et dolore magna aliqua.</p>\r\n                    <p class=\"text-2\">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip\r\n                        ex ea commodo consequat.</p>\r\n                </div>\r\n            </section>\r\n        </main>\r\n\r\n        <input [formControl]=\"color\" type=\"color\" id=\"body\" name=\"body\"/>\r\n    `,\r\n    styles: `\r\n        * {\r\n            box-sizing: border-box;\r\n            margin: 0;\r\n        }\r\n\r\n        html {\r\n            block-size: 100%;\r\n            background-color: var(--surface-1);\r\n            color: var(--text-1);\r\n            accent-color: var(--brand);\r\n        }\r\n\r\n        body {\r\n            min-block-size: 100%;\r\n            font-family: system-ui, sans-serif;\r\n            padding: var(--size-6);\r\n            display: grid;\r\n            place-content: center;\r\n            gap: var(--size-6);\r\n        }\r\n\r\n        main {\r\n            display: flex;\r\n            flex-flow: row wrap;\r\n            align-items: center;\r\n            align-content: center;\r\n            justify-content: center;\r\n            gap: var(--size-10);\r\n        }\r\n\r\n        section {\r\n            display: grid;\r\n            gap: var(--size-6);\r\n        }\r\n\r\n        h1 {\r\n        }\r\n\r\n        p {\r\n            max-inline-size: var(--size-content-1);\r\n            font-size: var(--font-size-4);\r\n            line-height: var(--font-lineheight-3);\r\n        }\r\n\r\n        header {\r\n            display: inline-grid;\r\n            gap: var(--size-3);\r\n        }\r\n\r\n        form {\r\n            display: flex;\r\n            gap: var(--size-5);\r\n\r\n            & > div {\r\n                display: inline-flex;\r\n                align-items: center;\r\n                gap: var(--size-2);\r\n            }\r\n        }\r\n\r\n        .surface-samples {\r\n            display: grid;\r\n            --size: var(--size-content-1);\r\n            grid-template-columns: var(--size) var(--size);\r\n            grid-auto-rows: var(--size);\r\n            gap: var(--size-5);\r\n\r\n            @media (width <= 480px) {\r\n                & {\r\n                    --size: 40vw;\r\n                }\r\n            }\r\n\r\n            & > * {\r\n                border-radius: var(--radius-3);\r\n                display: grid;\r\n                place-content: center;\r\n                font-size: var(--font-size-8);\r\n            }\r\n        }\r\n\r\n        .text-samples {\r\n            display: grid;\r\n            gap: var(--size-4);\r\n\r\n            & > h1 {\r\n                font-size: var(--font-size-6);\r\n                display: inline-flex;\r\n                align-items: center;\r\n                gap: var(--size-3);\r\n            }\r\n        }\r\n\r\n        .brand {\r\n            color: var(--brand);\r\n            background-color: var(--brand);\r\n        }\r\n\r\n        .surface-1 {\r\n            background-color: var(--surface-1);\r\n            color: var(--text-2);\r\n        }\r\n\r\n        .surface-2 {\r\n            background-color: var(--surface-2);\r\n            color: var(--text-2);\r\n        }\r\n\r\n        .surface-3 {\r\n            background-color: var(--surface-3);\r\n            color: var(--text-1);\r\n        }\r\n\r\n        .surface-4 {\r\n            background-color: var(--surface-4);\r\n            color: var(--text-1);\r\n        }\r\n\r\n        .text-1 {\r\n            color: var(--text-1);\r\n        }\r\n\r\n        .text-2 {\r\n            color: var(--text-2);\r\n        }\r\n\r\n        .swatch {\r\n            display: inline-block;\r\n            flex-shrink: 0;\r\n            inline-size: var(--size-8);\r\n            block-size: var(--size-8);\r\n            border-radius: var(--radius-round);\r\n\r\n            &.text-1 {\r\n                background-color: var(--text-1);\r\n            }\r\n\r\n            &.text-2 {\r\n                background-color: var(--text-2);\r\n            }\r\n        }\r\n\r\n        .rad-shadow {\r\n            box-shadow: 0 1rem .5rem -.5rem;\r\n            box-shadow: 0 2.8px 2.2px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 3%)),\r\n            0 6.7px 5.3px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 1%)),\r\n            0 12.5px 10px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 2%)),\r\n            0 22.3px 17.9px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 2%)),\r\n            0 41.8px 33.4px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 3%)),\r\n            0 100px 80px hsl(var(--surface-shadow) / var(--shadow-strength));\r\n        }\r\n    `,\r\n} )\r\nexport default class ThemeComponent {\r\n\r\n    public color = new FormControl();\r\n\r\n    constructor() {\r\n        this.color.valueChanges.subscribe( color => {\r\n            const root = document.documentElement;\r\n            root.style.setProperty( '--brand', color );\r\n        } )\r\n    }\r\n}\r\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { FormControl, ReactiveFormsModule } from \"@angular/forms\";\r\n\r\n@Component( {\r\n    selector: 'app-theme',\r\n    standalone: true,\r\n    imports: [ ReactiveFormsModule ],\r\n    template: `\r\n        <main>\r\n            <section>\r\n                <div class=\"surface-samples\">\r\n                    <div class=\"surface-1 rad-shadow\">1</div>\r\n                    <div class=\"surface-2 rad-shadow\">2</div>\r\n                    <div class=\"surface-3 rad-shadow\">3</div>\r\n                    <div class=\"surface-4 rad-shadow\">4</div>\r\n                </div>\r\n            </section>\r\n\r\n            <section>\r\n                <div class=\"text-samples\">\r\n                    <h1 class=\"text-1\">\r\n                        <span class=\"swatch brand rad-shadow\"></span>\r\n                        Brand\r\n                    </h1>\r\n                    <h1 class=\"text-1\">\r\n                        <span class=\"swatch text-1 rad-shadow\"></span>\r\n                        Text Color 1\r\n                    </h1>\r\n                    <h1 class=\"text-2\">\r\n                        <span class=\"swatch text-2 rad-shadow\"></span>\r\n                        Text Color 2\r\n                    </h1>\r\n                    <br>\r\n                    <p class=\"text-1\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\r\n                        incididunt ut labore et dolore magna aliqua.\r\n                    </p>\r\n                    <p class=\"text-2\">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip\r\n                        ex ea commodo consequat.\r\n                    </p>\r\n                </div>\r\n            </section>\r\n        </main>\r\n\r\n        <input [formControl]=\"color\" type=\"color\" id=\"body\" name=\"body\"/>\r\n    `,\r\n    styles: `\r\n        * {\r\n            box-sizing: border-box;\r\n            margin: 0;\r\n        }\r\n\r\n        html {\r\n            block-size: 100%;\r\n            background-color: var(--surface-1);\r\n            color: var(--text-1);\r\n            accent-color: var(--brand);\r\n        }\r\n\r\n        body {\r\n            min-block-size: 100%;\r\n            font-family: system-ui, sans-serif;\r\n            padding: var(--size-6);\r\n            display: grid;\r\n            place-content: center;\r\n            gap: var(--size-6);\r\n        }\r\n\r\n        main {\r\n            display: flex;\r\n            flex-flow: row wrap;\r\n            align-items: center;\r\n            align-content: center;\r\n            justify-content: center;\r\n            gap: var(--size-10);\r\n        }\r\n\r\n        section {\r\n            display: grid;\r\n            gap: var(--size-6);\r\n        }\r\n\r\n        h1 {\r\n        }\r\n\r\n        p {\r\n            max-inline-size: var(--size-content-1);\r\n            font-size: var(--font-size-4);\r\n            line-height: var(--font-lineheight-3);\r\n        }\r\n\r\n        header {\r\n            display: inline-grid;\r\n            gap: var(--size-3);\r\n        }\r\n\r\n        form {\r\n            display: flex;\r\n            gap: var(--size-5);\r\n\r\n            & > div {\r\n                display: inline-flex;\r\n                align-items: center;\r\n                gap: var(--size-2);\r\n            }\r\n        }\r\n\r\n        .surface-samples {\r\n            display: grid;\r\n            --size: var(--size-content-1);\r\n            grid-template-columns: var(--size) var(--size);\r\n            grid-auto-rows: var(--size);\r\n            gap: var(--size-5);\r\n\r\n            @media (width <= 480px) {\r\n                & {\r\n                    --size: 40vw;\r\n                }\r\n            }\r\n\r\n            & > * {\r\n                border-radius: var(--radius-3);\r\n                display: grid;\r\n                place-content: center;\r\n                font-size: var(--font-size-8);\r\n            }\r\n        }\r\n\r\n        .text-samples {\r\n            display: grid;\r\n            gap: var(--size-4);\r\n\r\n            & > h1 {\r\n                font-size: var(--font-size-6);\r\n                display: inline-flex;\r\n                align-items: center;\r\n                gap: var(--size-3);\r\n            }\r\n        }\r\n\r\n        .brand {\r\n            color: var(--brand);\r\n            background-color: var(--brand);\r\n        }\r\n\r\n\r\n        .swatch {\r\n            display: inline-block;\r\n            flex-shrink: 0;\r\n            inline-size: var(--size-8);\r\n            block-size: var(--size-8);\r\n            border-radius: var(--radius-round);\r\n\r\n            &.text-1 {\r\n                background-color: var(--text-1);\r\n            }\r\n\r\n            &.text-2 {\r\n                background-color: var(--text-2);\r\n            }\r\n        }\r\n    `,\r\n} )\r\nexport default class ThemeComponent {\r\n\r\n    public color = new FormControl();\r\n\r\n    constructor() {\r\n        this.color.valueChanges.subscribe( color => {\r\n            const root = document.documentElement;\r\n            root.style.setProperty( '--brand', color );\r\n        } )\r\n    }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
-            "stylesData": "\n        * {\n            box-sizing: border-box;\n            margin: 0;\n        }\n\n        html {\n            block-size: 100%;\n            background-color: var(--surface-1);\n            color: var(--text-1);\n            accent-color: var(--brand);\n        }\n\n        body {\n            min-block-size: 100%;\n            font-family: system-ui, sans-serif;\n            padding: var(--size-6);\n            display: grid;\n            place-content: center;\n            gap: var(--size-6);\n        }\n\n        main {\n            display: flex;\n            flex-flow: row wrap;\n            align-items: center;\n            align-content: center;\n            justify-content: center;\n            gap: var(--size-10);\n        }\n\n        section {\n            display: grid;\n            gap: var(--size-6);\n        }\n\n        h1 {\n        }\n\n        p {\n            max-inline-size: var(--size-content-1);\n            font-size: var(--font-size-4);\n            line-height: var(--font-lineheight-3);\n        }\n\n        header {\n            display: inline-grid;\n            gap: var(--size-3);\n        }\n\n        form {\n            display: flex;\n            gap: var(--size-5);\n\n            & > div {\n                display: inline-flex;\n                align-items: center;\n                gap: var(--size-2);\n            }\n        }\n\n        .surface-samples {\n            display: grid;\n            --size: var(--size-content-1);\n            grid-template-columns: var(--size) var(--size);\n            grid-auto-rows: var(--size);\n            gap: var(--size-5);\n\n            @media (width <= 480px) {\n                & {\n                    --size: 40vw;\n                }\n            }\n\n            & > * {\n                border-radius: var(--radius-3);\n                display: grid;\n                place-content: center;\n                font-size: var(--font-size-8);\n            }\n        }\n\n        .text-samples {\n            display: grid;\n            gap: var(--size-4);\n\n            & > h1 {\n                font-size: var(--font-size-6);\n                display: inline-flex;\n                align-items: center;\n                gap: var(--size-3);\n            }\n        }\n\n        .brand {\n            color: var(--brand);\n            background-color: var(--brand);\n        }\n\n        .surface-1 {\n            background-color: var(--surface-1);\n            color: var(--text-2);\n        }\n\n        .surface-2 {\n            background-color: var(--surface-2);\n            color: var(--text-2);\n        }\n\n        .surface-3 {\n            background-color: var(--surface-3);\n            color: var(--text-1);\n        }\n\n        .surface-4 {\n            background-color: var(--surface-4);\n            color: var(--text-1);\n        }\n\n        .text-1 {\n            color: var(--text-1);\n        }\n\n        .text-2 {\n            color: var(--text-2);\n        }\n\n        .swatch {\n            display: inline-block;\n            flex-shrink: 0;\n            inline-size: var(--size-8);\n            block-size: var(--size-8);\n            border-radius: var(--radius-round);\n\n            &.text-1 {\n                background-color: var(--text-1);\n            }\n\n            &.text-2 {\n                background-color: var(--text-2);\n            }\n        }\n\n        .rad-shadow {\n            box-shadow: 0 1rem .5rem -.5rem;\n            box-shadow: 0 2.8px 2.2px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 3%)),\n            0 6.7px 5.3px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 1%)),\n            0 12.5px 10px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 2%)),\n            0 22.3px 17.9px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 2%)),\n            0 41.8px 33.4px hsl(var(--surface-shadow) / calc(var(--shadow-strength) + 3%)),\n            0 100px 80px hsl(var(--surface-shadow) / var(--shadow-strength));\n        }\n    \n",
+            "stylesData": "\n        * {\n            box-sizing: border-box;\n            margin: 0;\n        }\n\n        html {\n            block-size: 100%;\n            background-color: var(--surface-1);\n            color: var(--text-1);\n            accent-color: var(--brand);\n        }\n\n        body {\n            min-block-size: 100%;\n            font-family: system-ui, sans-serif;\n            padding: var(--size-6);\n            display: grid;\n            place-content: center;\n            gap: var(--size-6);\n        }\n\n        main {\n            display: flex;\n            flex-flow: row wrap;\n            align-items: center;\n            align-content: center;\n            justify-content: center;\n            gap: var(--size-10);\n        }\n\n        section {\n            display: grid;\n            gap: var(--size-6);\n        }\n\n        h1 {\n        }\n\n        p {\n            max-inline-size: var(--size-content-1);\n            font-size: var(--font-size-4);\n            line-height: var(--font-lineheight-3);\n        }\n\n        header {\n            display: inline-grid;\n            gap: var(--size-3);\n        }\n\n        form {\n            display: flex;\n            gap: var(--size-5);\n\n            & > div {\n                display: inline-flex;\n                align-items: center;\n                gap: var(--size-2);\n            }\n        }\n\n        .surface-samples {\n            display: grid;\n            --size: var(--size-content-1);\n            grid-template-columns: var(--size) var(--size);\n            grid-auto-rows: var(--size);\n            gap: var(--size-5);\n\n            @media (width <= 480px) {\n                & {\n                    --size: 40vw;\n                }\n            }\n\n            & > * {\n                border-radius: var(--radius-3);\n                display: grid;\n                place-content: center;\n                font-size: var(--font-size-8);\n            }\n        }\n\n        .text-samples {\n            display: grid;\n            gap: var(--size-4);\n\n            & > h1 {\n                font-size: var(--font-size-6);\n                display: inline-flex;\n                align-items: center;\n                gap: var(--size-3);\n            }\n        }\n\n        .brand {\n            color: var(--brand);\n            background-color: var(--brand);\n        }\n\n\n        .swatch {\n            display: inline-block;\n            flex-shrink: 0;\n            inline-size: var(--size-8);\n            block-size: var(--size-8);\n            border-radius: var(--radius-round);\n\n            &.text-1 {\n                background-color: var(--text-1);\n            }\n\n            &.text-2 {\n                background-color: var(--text-2);\n            }\n        }\n    \n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 200
+                "line": 165
             },
             "extends": []
+        },
+        {
+            "name": "ToolsComponent",
+            "id": "component-ToolsComponent-5fb9ffb1f5ac5001c96ecdbf65979bdfe213099959c5638c128b7eaf6e0cbe4e82a5c6aec94ef86ab2bd2706bfd4b0363385ce4ee1e0fd81e1067338ec34f2a3",
+            "file": "src/app/ui/tools/tools.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-tools",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./tools.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "canvas",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ElementRef<HTMLCanvasElement> | undefined",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 13,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'canvas'"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "playAnimation",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 56,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { afterNextRender, Component, ElementRef, ViewChild } from '@angular/core';\nimport { MatterService } from \"../../../../libs/matter/matter.service\";\n\n@Component( {\n    selector: 'app-tools',\n    imports: [],\n    templateUrl: './tools.component.html',\n    styleUrl: './tools.component.scss'\n} )\nexport class ToolsComponent {\n\n    @ViewChild( 'canvas' )\n    canvas: ElementRef<HTMLCanvasElement> | undefined;\n\n    constructor( private matterService: MatterService ) {\n\n        afterNextRender( () => {\n            let el = this.canvas!.nativeElement\n            matterService.init( el );\n            matterService.createBodies();\n            matterService.runRender();\n            matterService.runEngine();\n\n            tools.forEach( ( tool ) => {\n                const image = new Image();\n                image.onload = () => {\n\n                    const canvasWidth = this.matterService.canvasWidth;\n                    const scaledSize = canvasWidth / 26;\n\n                    const body = this.matterService.createCircle(\n                          Math.random() * (canvasWidth - scaledSize) + scaledSize,\n                        0,\n                        scaledSize,\n                        {\n                            restitution: 0.8,\n                            force: {\n                                x: 0,\n                                y: canvasWidth / 1024 * 0.01\n                            },\n                            render: {\n                                sprite: {\n                                    texture: image.src,\n                                    xScale: scaledSize / 20,\n                                    yScale: scaledSize / 20\n                                }\n                            }\n                        } );\n                    this.matterService.prepareBody( body );\n                };\n                image.src = `/src/assets/logos/logo_${ tool }.png`;\n            } )\n        } )\n    }\n\n    playAnimation() {\n        this.matterService.addPreparedBodies( 300 );\n    }\n}\n\n\nconst tools = [ 'angular', 'aws', 'docker', 'dotnet', 'firebase', 'gcp', 'gitlab', 'graphql', 'hasura', 'ibm',\n    'javascript', 'jenkins', 'jira', 'jsp', 'kafka', 'kubernetes', 'microservices', 'nest', 'postgres', 'react', 'spring',\n    'tailwind', 'typescript', 'veracode', 'wsl' ]\n",
+            "styleUrl": "./tools.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "matterService",
+                        "type": "MatterService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 13,
+                "jsdoctags": [
+                    {
+                        "name": "matterService",
+                        "type": "MatterService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "templateData": "<section class=\"home-section\">\n    <h2 class=\"weight-6 text-center\">What I Have Experience Using</h2>\n    <p class=\"text-center\">\n        Throughout my career I have been exposed to a wide variety of tools and technologies to various degrees. When it\n        comes to my confidence and experience, then Angular comes out on top for frontend while I am comfortable with C#,\n        Java or Typescript when it comes to the backend.\n    </p>\n    <button class=\"surface-3\" (click)=\"playAnimation()\">Play Animation</button>\n    <canvas #canvas></canvas>\n</section>\n"
         }
     ],
     "modules": [],
@@ -228,7 +1229,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "ApplicationConfig",
-                "defaultValue": "{\n  providers: [\n    provideZoneChangeDetection({ eventCoalescing: true }),\n    provideFileRouter(),\n    provideHttpClient(\n      withFetch(),\n      withInterceptors([requestContextInterceptor])\n    ),\n    provideClientHydration(),\n  ],\n}"
+                "defaultValue": "{\n  providers: [\n    provideZoneChangeDetection({ eventCoalescing: true }),\n    provideFileRouter(\n      withDebugRoutes(),\n      withInMemoryScrolling({\n        scrollPositionRestoration: 'top',\n      }),\n    ),\n    provideHttpClient(\n      withFetch(),\n      withInterceptors([requestContextInterceptor]),\n    ),\n    provideClientHydration(),\n    provideContent(withMarkdownRenderer(), withPrismHighlighter()),\n    MarkedSetupService,\n    {\n      provide: ContentRenderer,\n      useClass: MarkdownContentRendererService,\n    },\n  ],\n}"
             },
             {
                 "name": "config",
@@ -241,6 +1242,16 @@
                 "defaultValue": "mergeApplicationConfig(appConfig, serverConfig)"
             },
             {
+                "name": "routeMeta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/pages/index.page.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "RouteMeta",
+                "defaultValue": "{\n  meta: [\n    {\n      name: 'description',\n      content: 'Description of the page',\n    },\n    {\n      name: 'author',\n      content: 'Analog Team',\n    },\n    {\n      property: 'og:title',\n      content: 'Title of the page',\n    },\n    {\n      property: 'og:description',\n      content: 'Some catchy description',\n    }\n  ],\n}"
+            },
+            {
                 "name": "serverConfig",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -249,6 +1260,16 @@
                 "deprecationMessage": "",
                 "type": "ApplicationConfig",
                 "defaultValue": "{\n  providers: [provideServerRendering()],\n}"
+            },
+            {
+                "name": "tools",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/ui/tools/tools.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "[ 'angular', 'aws', 'docker', 'dotnet', 'firebase', 'gcp', 'gitlab', 'graphql', 'hasura', 'ibm',\n    'javascript', 'jenkins', 'jira', 'jsp', 'kafka', 'kubernetes', 'microservices', 'nest', 'postgres', 'react', 'spring',\n    'tailwind', 'typescript', 'veracode', 'wsl' ]"
             }
         ],
         "functions": [],
@@ -264,7 +1285,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "ApplicationConfig",
-                    "defaultValue": "{\n  providers: [\n    provideZoneChangeDetection({ eventCoalescing: true }),\n    provideFileRouter(),\n    provideHttpClient(\n      withFetch(),\n      withInterceptors([requestContextInterceptor])\n    ),\n    provideClientHydration(),\n  ],\n}"
+                    "defaultValue": "{\n  providers: [\n    provideZoneChangeDetection({ eventCoalescing: true }),\n    provideFileRouter(\n      withDebugRoutes(),\n      withInMemoryScrolling({\n        scrollPositionRestoration: 'top',\n      }),\n    ),\n    provideHttpClient(\n      withFetch(),\n      withInterceptors([requestContextInterceptor]),\n    ),\n    provideClientHydration(),\n    provideContent(withMarkdownRenderer(), withPrismHighlighter()),\n    MarkedSetupService,\n    {\n      provide: ContentRenderer,\n      useClass: MarkdownContentRendererService,\n    },\n  ],\n}"
                 }
             ],
             "src/app/app.config.server.ts": [
@@ -288,6 +1309,30 @@
                     "type": "ApplicationConfig",
                     "defaultValue": "{\n  providers: [provideServerRendering()],\n}"
                 }
+            ],
+            "src/app/pages/index.page.ts": [
+                {
+                    "name": "routeMeta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/pages/index.page.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "RouteMeta",
+                    "defaultValue": "{\n  meta: [\n    {\n      name: 'description',\n      content: 'Description of the page',\n    },\n    {\n      name: 'author',\n      content: 'Analog Team',\n    },\n    {\n      property: 'og:title',\n      content: 'Title of the page',\n    },\n    {\n      property: 'og:description',\n      content: 'Some catchy description',\n    }\n  ],\n}"
+                }
+            ],
+            "src/app/ui/tools/tools.component.ts": [
+                {
+                    "name": "tools",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/ui/tools/tools.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "defaultValue": "[ 'angular', 'aws', 'docker', 'dotnet', 'firebase', 'gcp', 'gitlab', 'graphql', 'hasura', 'ibm',\n    'javascript', 'jenkins', 'jira', 'jsp', 'kafka', 'kubernetes', 'microservices', 'nest', 'postgres', 'react', 'spring',\n    'tailwind', 'typescript', 'veracode', 'wsl' ]"
+                }
             ]
         },
         "groupedFunctions": {},
@@ -296,7 +1341,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 0,
+        "count": 3,
         "status": "low",
         "files": [
             {
@@ -339,12 +1384,67 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/pages/(projects)/components/projects-header/projects-header.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ProjectsHeaderComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/pages/(projects)/components/projects-list/projects-list.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ProjectsListComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/pages/(projects)/models/project.attributes.model.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ProjectAttributes",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/pages/(projects)/projects.[slug].page.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ProjectDetailsPage",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/pages/(projects)/projects.page.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ProjectsPage",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/pages/index.page.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "HomeComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/pages/index.page.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "routeMeta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -357,12 +1457,103 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/ui/card/card.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CardComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/ui/footer/footer.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "FooterComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/ui/hero/hero.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "HeroComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/ui/navbar/navbar.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "NavbarComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/ui/responsibilities/responsibilities.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ResponsibilitiesComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/ui/tools/tools.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ToolsComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/ui/tools/tools.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "tools",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ButtonComponent",
+                "coveragePercent": 83,
+                "coverageCount": "5/6",
+                "status": "very-good"
+            },
+            {
+                "filePath": "src/stories/header.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HeaderComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/page.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "PageComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/user.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "User",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
                 "status": "low"
             }
         ]

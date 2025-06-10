@@ -29,19 +29,7 @@ export default defineConfig(({ mode }) => ({
         inlineStylesExtension: 'scss',
       },
       prerender: {
-        routes: async () => [
-          '/**',
-          'projects',
-          {
-            contentDir: 'src/content/projects',
-            transform: (file: PrerenderContentFile) => {
-              // do not include files marked as draft in frontmatter
-              // use the slug from frontmatter if defined, otherwise use the files basename
-              const slug = file.attributes['slug'] || file.name;
-              return `/projects/${slug}`;
-            },
-          },
-        ],
+        routes: async () => ['/'],
       },
     }),
   ],
