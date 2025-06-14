@@ -1,5 +1,5 @@
 <!--<nav class="flex jc-space-between align-items-center width-100">-->
-<!--  <div class="text-1 weight-6 font-size-5 font-title">Ryan Field</div>-->
+<!--  <div routerLink="/" class="text-1 weight-6 font-size-5 font-title">Ryan Field</div>-->
 <!--  <span class="flex align-items-center gap-2 height-100">-->
 <!--    <label class="weight-6" for="theme">Theme: </label>-->
 <!--    <select [formControl]="theme" class="weight-6" name="themes">-->
@@ -16,7 +16,9 @@
   <label class="checkbtn" for="check">
     <ng-icon name="matMenuRound"></ng-icon>
   </label>
-  <div [ngClass]="checkboxValue()  ? 'slide-in-right' : 'slide-out-left' " class="nav-mobile">
+</nav>
+
+<div [class]="menuClass()" class="nav-mobile">
     <label class="checkbtn" for="check">
       <ng-icon name="matMenuRound"></ng-icon>
     </label>
@@ -24,4 +26,3 @@
     <a routerLink="/projects">Projects</a>
     <a routerLink="/theme">Theme</a>
   </div>
-</nav>

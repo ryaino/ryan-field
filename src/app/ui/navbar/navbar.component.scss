@@ -24,13 +24,23 @@ select {
 
 .nav-mobile {
   display:block;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   background: #222831;
   z-index: 1;
   width: 100%;
   height: 100%;
+
+  &.closed {
+    left: calc(100% * -1);
+    transition: all 0.5s;
+  }
+
+  &.open {
+    left: 0;
+    transition: all 0.5s;
+  }
 }
 .nav-mobile a {
   color: #fff;

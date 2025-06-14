@@ -1,14 +1,14 @@
-import { Component, effect, Inject } from '@angular/core';
+import { Component, computed, effect, Inject } from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { matMenuRound } from '@ng-icons/material-icons/round';
 import { RouterLink } from '@angular/router';
-import { DOCUMENT, NgClass } from '@angular/common';
+import { DOCUMENT } from '@angular/common';
 import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-navbar',
-  imports: [ReactiveFormsModule, NgIcon, RouterLink, NgClass],
+  imports: [ReactiveFormsModule, NgIcon, RouterLink],
   viewProviders: [provideIcons({ matMenuRound })],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
@@ -22,6 +22,8 @@ export class NavbarComponent {
 
   checkbox: FormControl<boolean | null> = new FormControl(false);
   checkboxValue = toSignal(this.checkbox.valueChanges);
+
+  menuClass = computed(() => (this.checkboxValue() ? 'open' : 'closed'));
 
   stateChange = effect(() => {
     if (this.checkboxValue()) {
