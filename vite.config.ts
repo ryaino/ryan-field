@@ -25,6 +25,7 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     analog({
+      liveReload: true,
       vite: {
         inlineStylesExtension: 'scss',
       },

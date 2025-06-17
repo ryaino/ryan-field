@@ -16,21 +16,31 @@ select {
 #check {
   display: none;
 }
-.checkbtn {
+.burger {
+  display: none;
+}
+
+label {
   font-size: 1.5rem;
   color: white;
   cursor: pointer;
+  height: 1em;
+  max-height: max-content;
+  line-height: 1em;
 }
 
 .nav-mobile {
-  display:block;
+  display: flex;
+  flex-direction: column;
   position: absolute;
   top: 0;
   left: 0;
-  background: #222831;
+  background: var(--surface-4);
   z-index: 1;
   width: 100%;
   height: 100%;
+  gap: var(--size-3);
+  font-size: var(--font-size-5);
 
   &.closed {
     left: calc(100% * -1);
@@ -43,14 +53,20 @@ select {
   }
 }
 .nav-mobile a {
-  color: #fff;
-  padding: 1rem 1.5rem;
-  display: block;
+  color: white;
+  padding-left: var(--size-3);
+  text-decoration: none;
+  &:hover {
+    background: var(--surface-3);
+  }
+}
+
+.close {
+  padding: var(--size-3);
 }
 
 @media only screen and (max-width: 992px) {
-  .nav-mobile a {
-    font-size: 2rem;
-    padding: 2rem 3rem;
+  .burger {
+    display: block;
   }
 }

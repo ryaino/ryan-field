@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "type": "module",
   "engines": {
-    "node": ">=18.19.1"
+    "node": ">=20.19.1"
   },
   "scripts": {
     "ng": "ng",
@@ -16,11 +16,6 @@
     "build-storybook": "ng run my-app:build-storybook"
   },
   "private": true,
-  "overrides": {
-    "@analogjs/platform": {
-      "@nx/angular": "21.2.0-beta.1"
-    }
-  },
   "dependencies": {
     "@analogjs/content": "^1.17.1",
     "@analogjs/router": "^1.17.1",
@@ -48,14 +43,13 @@
     "rxjs": "~7.8.0",
     "tailwindcss": "^4.1.4",
     "tslib": "^2.3.0",
-    "zone.js": "^0.15.0"
+    "zone.js": "~0.15.0"
   },
   "devDependencies": {
     "@analogjs/platform": "^1.17.1",
     "@analogjs/storybook-angular": "^1.17.1",
     "@analogjs/vite-plugin-angular": "^1.17.1",
     "@analogjs/vitest-angular": "^1.17.1",
-    "@angular-devkit/build-angular": "^20.0.1",
     "@angular/build": "^20.0.0",
     "@angular/cli": "^20.0.0",
     "@angular/compiler-cli": "^20.0.0",
