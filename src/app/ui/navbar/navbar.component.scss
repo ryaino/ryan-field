@@ -16,6 +16,7 @@ select {
 #check {
   display: none;
 }
+
 .burger {
   display: none;
 }
@@ -27,6 +28,20 @@ label {
   height: 1em;
   max-height: max-content;
   line-height: 1em;
+}
+
+.links {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  gap: var(--size-4);
+
+  a {
+    color: var(--text-1);
+    text-decoration: none;
+    font-size: var(--font-size-3);
+    font-family: var(--font-title), serif;
+  }
 }
 
 .nav-mobile {
@@ -51,11 +66,25 @@ label {
     left: 0;
     transition: all 0.5s;
   }
+
+  .themes {
+    padding-left: var(--size-3) ;
+  }
+
+  select {
+    height: auto;
+    font-size: var(--font-size-3);
+    padding-block: unset;
+  }
 }
+
 .nav-mobile a {
-  color: white;
+  color: var(--text-1);
   padding-left: var(--size-3);
   text-decoration: none;
+  font-size: var(--font-size-3);
+  font-family: var(--font-title), serif;
+
   &:hover {
     background: var(--surface-3);
   }
@@ -65,8 +94,14 @@ label {
   padding: var(--size-3);
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 720px) {
   .burger {
     display: block;
   }
+
+  .links,
+  .select {
+    display: none;
+  }
+
 }

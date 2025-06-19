@@ -33,7 +33,6 @@ export const appConfig: ApplicationConfig = {
       withFetch(),
       withInterceptors([requestContextInterceptor]),
     ),
-    provideClientHydration(),
     provideContent(withMarkdownRenderer(), withPrismHighlighter()),
     MarkedSetupService,
     {

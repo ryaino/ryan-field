@@ -1,12 +1,17 @@
 <nav class="flex jc-space-between align-items-center width-100">
   <span class="flex gap-2 align-items-center">
-    <input [formControl]="checkbox" id="check" type="checkbox"/>
+    <input [formControl]="checkbox" id="check" type="checkbox" />
     <label class="burger" for="check">
       <ng-icon name="matMenuRound"></ng-icon>
     </label>
     <div class="text-1 weight-6 font-size-5 font-title">Ryan Field</div>
   </span>
-  <span class="flex align-items-center gap-2 height-100">
+  <span class="links">
+    <a routerLink="/">Home</a>
+    <a routerLink="/projects">Projects</a>
+    <a routerLink="/theme">Theme</a>
+  </span>
+  <span class="select flex align-items-center gap-2 height-100">
     <label class="weight-6" for="theme">Theme: </label>
     <select [formControl]="theme" class="weight-6" name="themes">
       <option value="blue-ice">blue-ice</option>
@@ -22,7 +27,18 @@
   <label class="close" for="check">
     <ng-icon class="font-size-5" name="matCloseRound"></ng-icon>
   </label>
+
   <a routerLink="/">Home</a>
   <a routerLink="/projects">Projects</a>
   <a routerLink="/theme">Theme</a>
+
+  <span class="themes flex align-items-center gap-2">
+    <label class="weight-6" for="theme">Theme: </label>
+    <select [formControl]="theme" class="weight-6" name="themes">
+      <option value="blue-ice">blue-ice</option>
+      <option value="strawberry">strawberry</option>
+      <option value="grape">grape</option>
+      <option value="lime">lime</option>
+    </select>
+  </span>
 </div>

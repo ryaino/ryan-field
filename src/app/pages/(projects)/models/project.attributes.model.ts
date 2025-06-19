@@ -3,4 +3,5 @@ export interface ProjectAttributes {
   slug: string;
   description: string;
   coverImage: string;
+  tags: string;
 }

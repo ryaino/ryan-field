@@ -3,13 +3,15 @@ import { ProjectAttributes } from './models/project.attributes.model';
 import { injectContent, MarkdownComponent } from '@analogjs/content';
 import { Meta } from '@angular/platform-browser';
 import { AsyncPipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-project-details',
-  imports: [MarkdownComponent, AsyncPipe],
+  imports: [MarkdownComponent, AsyncPipe, RouterLink],
   standalone: true,
-  template: ` @if (post | async; as post) {
-    {{ post.attributes.title }}
+  template: `
+  <a routerLink="../">Back to Projects</a>
+   @if (post | async; as post) {
     <analog-markdown [content]="post.content" />
   }`,
 
@@ -21,7 +23,7 @@ export default class ProjectDetailsPage implements OnInit {
     subdirectory: 'projects',
   });
 
-  constructor(private meta: Meta) {}
+  constructor(private meta: Meta) { }
 
   ngOnInit(): void {
     this.post
