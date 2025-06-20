@@ -6,7 +6,6 @@ import {
   ViewChild,
 } from '@angular/core';
 import { MatterService } from '../../../../libs/matter/matter.service';
-import { APP_BASE_HREF } from '@angular/common';
 
 @Component({
   selector: 'app-tools',
@@ -17,7 +16,6 @@ import { APP_BASE_HREF } from '@angular/common';
 export class ToolsComponent {
   @ViewChild('canvas')
   canvas: ElementRef<HTMLCanvasElement> | undefined;
-  baseHref = Inject(APP_BASE_HREF);
 
   constructor(private matterService: MatterService) {
     afterNextRender(() => {
@@ -54,7 +52,7 @@ export class ToolsComponent {
           );
           this.matterService.prepareBody(body);
         };
-        image.src = `${this.baseHref.toString()}/assets/logos/logo_${tool}.png`;
+        image.src = `/ryan-field/assets/logos/logo_${tool}.png`;
       });
     });
   }
