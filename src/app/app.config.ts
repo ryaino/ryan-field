@@ -4,7 +4,7 @@ import {
   withInterceptors,
 } from '@angular/common/http';
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideClientHydration } from '@angular/platform-browser';
+import { APP_BASE_HREF } from '@angular/common';
 import {
   provideFileRouter,
   requestContextInterceptor,
@@ -22,6 +22,7 @@ import { withPrismHighlighter } from '@analogjs/content/prism-highlighter';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    [{ provide: APP_BASE_HREF, useValue: 'ryan-field' }],
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideFileRouter(
       withDebugRoutes(),

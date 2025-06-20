@@ -9,7 +9,7 @@
     "ng": "ng",
     "dev": "ng serve",
     "start": "npm run dev",
-    "build": "ng build",
+    "build": "ng build --baseHref=\"/ryan-field/\"",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "storybook": "storybook dev --port 4400",
