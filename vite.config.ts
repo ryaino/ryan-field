@@ -29,8 +29,22 @@ export default defineConfig(({ mode }) => ({
       vite: {
         inlineStylesExtension: 'scss',
       },
+      static: true,
+      ssr: true,
       prerender: {
-        routes: async () => ['/'],
+        routes: async () => [
+          '/',
+          '/projects',
+          '/theme',
+          {
+            contentDir: 'src/content/projects',
+            transform: (file: PrerenderContentFile) => {
+              // use the slug from frontmatter if defined, otherwise use the files basename
+              const slug = file.attributes['slug'] || file.name;
+              return `/projects/${slug}`;
+            },
+          },
+        ],
       },
     }),
   ],
