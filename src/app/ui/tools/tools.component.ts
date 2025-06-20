@@ -54,7 +54,7 @@ export class ToolsComponent {
           );
           this.matterService.prepareBody(body);
         };
-        image.src = `${this.baseHref}/assets/logos/logo_${tool}.png`;
+        image.src = `${this.baseHref.toString()}/assets/logos/logo_${tool}.png`;
       });
     });
   }
