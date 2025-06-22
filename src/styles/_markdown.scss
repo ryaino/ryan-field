@@ -1,0 +1,18 @@
+ .analog-markdown {
+     display: flex;
+     flex-direction: column;
+     gap: var(--size-4);
+     margin: auto;
+     max-width: max-content;
+
+     h1,
+     h2,
+     h3,
+     h4 {
+         max-inline-size: var(--size-content-3);
+     }
+
+     em {
+         display: inline;
+     }
+ }

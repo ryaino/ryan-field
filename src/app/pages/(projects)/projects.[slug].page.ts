@@ -10,9 +10,9 @@ import { RouterLink } from '@angular/router';
   imports: [MarkdownComponent, AsyncPipe, RouterLink],
   standalone: true,
   template: `
-  <a routerLink="../">Back to Projects</a>
-   @if (post | async; as post) {
+  @if (post | async; as post) {
     <analog-markdown [content]="post.content" />
+    <hr>
   }`,
 
   styles: ``,
@@ -30,7 +30,7 @@ export default class ProjectDetailsPage implements OnInit {
       .forEach((x) => {
         this.meta.updateTag({
           name: `og:url`,
-          content: `https://localhost:5173/projects/${x.attributes.slug}`,
+          content: `https://localhost:5173/projects/${x.slug}`,
         });
         this.meta.updateTag({
           name: `og:title`,
