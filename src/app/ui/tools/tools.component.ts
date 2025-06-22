@@ -52,7 +52,7 @@ export class ToolsComponent {
           );
           this.matterService.prepareBody(body);
         };
-        image.src = `/ryan-field/assets/logos/logo_${tool}.png`;
+        image.src = `${import.meta.env.BASE_URL}assets/logos/logo_${tool}.png`;
       });
     });
   }

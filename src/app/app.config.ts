@@ -22,7 +22,7 @@ import { withPrismHighlighter } from '@analogjs/content/prism-highlighter';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    [{ provide: APP_BASE_HREF, useValue: '/ryan-field' }],
+    [{ provide: APP_BASE_HREF, useValue: import.meta.env.BASE_URL }],
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideFileRouter(
       withDebugRoutes(),

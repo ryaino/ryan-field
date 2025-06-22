@@ -23,6 +23,7 @@ export default defineConfig(({ mode }) => ({
       },
     },
   },
+  base: mode === 'development' ? '/' : '/ryan-field/',
   plugins: [
     analog({
       liveReload: true,
