@@ -1,6 +1,7 @@
 export interface ProjectAttributes {
   title: string;
   description: string;
-  coverImage: string;
-  tags: string;
+  repository?: string;
+  link?: string;
+  tags: string[];
 }

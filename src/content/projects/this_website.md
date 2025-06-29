@@ -1,12 +1,15 @@
 ---
 title: This Website
 slug: this-website
-description: The website you're viewing this and all my other projects on.
-coverImage: https://images.unsplash.com/photo-1493612276216-ee3925520721?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80
-tags: analog,angular,javascript
+description: The website that you're on right now. An all in one place for me to talk about myself and show off my work.
+repository: https://github.com/ryaino/ryan-field
+link: https://ryaino.github.io/ryan-field/
+tags:
+    - analog
+    - angular
+    - javascript
+    - project
 ---
-
-## This Website
 
 There's no external project to link to for this one because you're already looking at it!
 Over the years I've changed up my personal / portfolio site as I've experimented with technologies and gained more experience.

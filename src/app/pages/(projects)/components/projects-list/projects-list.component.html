@@ -1,8 +1,13 @@
 <ul>
   @for(post of posts; track post.slug) {
-    <li>
-      <a [routerLink]="['/projects', post.slug]"> {{ post.attributes.title }} </a>
-      <img [ngSrc]="post.attributes.coverImage" width="80" height="80">
-    </li>
+  <li [routerLink]="['/projects', post.slug]" class="project-list-item rad-shadow">
+    <h4> {{ post.attributes.title }} </h4>
+    <p>{{ post.attributes.description }}</p>
+    <div class="tags">
+      @for(tag of post.attributes.tags; track tag) {
+      <span>{{tag}}</span>
+      }
+    </div>
+  </li>
   }
 </ul>
