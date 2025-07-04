@@ -21,8 +21,4 @@ My solution to this was to create a web page where I could select an album I wan
 
 ### Future Plans
 
-Once I reach the point of adding more features, or migrating old projects under here that require a server and/or database,
-then the plan is to move everything in a virtual machine with the help of Docker.
 
-To help with the development of my own UI library I've incorporated Storybook. Once I've built out some components then I'll
-make that documentation available for viewing.
