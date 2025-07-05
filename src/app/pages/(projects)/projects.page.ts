@@ -11,7 +11,8 @@ import { ProjectsListComponent } from './components/projects-list/projects-list.
     <app-projects-list></app-projects-list>
     <hr />
   `,
-  styles: ``,
+  styles: `
+  `,
   imports: [ProjectsHeaderComponent, ProjectsListComponent],
 })
 export default class ProjectsPage {}
