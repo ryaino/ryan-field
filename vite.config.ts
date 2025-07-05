@@ -2,6 +2,8 @@
 
 import { defineConfig } from 'vite';
 import analog, { PrerenderContentFile } from '@analogjs/platform';
+import {NodePackageImporter} from 'sass-embedded';
+import {NodePackageImporter as DartSassPackageImporter} from 'sass';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
@@ -18,8 +20,10 @@ export default defineConfig(({ mode }) => ({
   css: {
     preprocessorOptions: {
       scss: {
-        api: 'legacy',
-        silenceDeprecations: ['legacy-js-api'],
+        api: 'modern-compiler',
+        importers: [
+           new NodePackageImporter() as unknown as DartSassPackageImporter,
+        ]
       },
     },
   },

@@ -1,20 +1,20 @@
 @forward "styles/typography";
-@forward "prismjs/themes/prism-dark.css";
+@forward "pkg:prismjs/themes/prism-dark.css";
 /* the props */
-@forward "open-props/style";
-@forward "open-props/media";
+@forward "pkg:open-props/style";
+@forward "pkg:open-props/media";
 
 /* optional forwards that forward the props */
-@forward "open-props/normalize";
-@forward "open-props/buttons";
-@forward "open-props/colors-hsl";
-@forward "open-props/brand-colors";
+@forward "pkg:open-props/normalize";
+@forward "pkg:open-props/buttons";
+@forward "pkg:open-props/colors-hsl";
+@forward "pkg:open-props/brand-colors";
 
 @forward 'styles/variables';
 @forward "styles/themes/themes";
 @forward "styles/surfaces";
 @forward "styles/shadows";
-@forward "styles/borders.css";
+@forward "styles/borders.scss";
 @forward "styles/layout";
 @forward "styles/size";
 @forward "styles/button";
