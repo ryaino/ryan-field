@@ -18,6 +18,11 @@ My solution to this was to create a web page where I could select an album I wan
 
 ### The Tech
 
+Since I was the only person intending to use this, the first version of this was actually just a REST API made in Java. Java was all I had experience with at the time and I liked the idea of not having to build a UI as I could just use any http client like Postman. You can find the repository for that version [here](https://github.com/ryaino/NZ-Record-Store-Search-Aggregator).
+
+Working with Java for a webscraper was pretty annoying and I wanted to improve my skills with Javascript so that's what I used for the latest version. NestJs was used for the backend, since it was very close in syntax to what I was used to in Java. I then hosted this myself on my home server using Docker and exposed it to the internet with Ngrok.
+
+The frontend is made with Angular and I used this as an opportunity to play around with some 3d / raised affects without worrying about things looking amazing. I used Firebase free hosting for this part of the app.  
 
 ### Future Plans
 

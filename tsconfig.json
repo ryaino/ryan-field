@@ -23,6 +23,7 @@
     "useDefineForClassFields": false,
     "skipLibCheck": true,
   },
+  "include": ["vite.config.ts"],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,

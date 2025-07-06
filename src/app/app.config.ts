@@ -24,7 +24,6 @@ import { provideClientHydration } from '@angular/platform-browser';
 export const appConfig: ApplicationConfig = {
   providers: [
     [{ provide: APP_BASE_HREF, useValue: import.meta.env.BASE_URL }],
-    provideClientHydration(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideFileRouter(
       withDebugRoutes(),

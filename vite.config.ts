@@ -30,7 +30,7 @@ export default defineConfig(({ mode }) => ({
   base: mode === 'development' ? '/' : '/ryan-field/',
   plugins: [
     analog({
-      liveReload: true,
+      liveReload: false,
       vite: {
         inlineStylesExtension: 'scss',
       },
