@@ -1,7 +1,7 @@
 import { CheerioAPI, fromURL, load } from 'cheerio';
 
-export async function getCardInfo() {
-  const response = await fromURL('https://en.onepiece-cardgame.com/cardlist/?series=569111');
+export async function getCardInfo(seriesId: string) {
+  const response = await fromURL(`https://en.onepiece-cardgame.com/cardlist/?series=${seriesId}`);
 
   const results = extractResults(response);
 
