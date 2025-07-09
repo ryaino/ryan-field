@@ -3,10 +3,8 @@ ul {
   flex-wrap: wrap;
   gap: var(--size-3);
   justify-content: space-evenly;
+  padding-inline-start: 0;
 }
-
-
-
 
 .project-list-item {
     background: var(--surface-2);
