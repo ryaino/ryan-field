@@ -55,7 +55,7 @@ import { CheerioAPI, fromURL } from 'cheerio';
 
 
 export async function getAllSeries() {
-  const response = await fromURL(`https://en.onepiece-cardgame.com/cardlist/`);
+  const response = await fromURL(`https://en.onepiece-cardgame.com/cardlist/?series=569111`);
 
   const allOptions = extractOptions(response);
 

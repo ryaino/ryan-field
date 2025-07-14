@@ -52,10 +52,13 @@ export default defineConfig(({ mode }) => ({
         ],
       },
       nitro: {
+        experimental: {
+          tasks: true
+        },
         storage: {
           db: {
             driver: 'fs',
-            base: './'
+            base: 'src/server/assets/cards'
           }
         }
       }

@@ -1,4 +1,4 @@
-import { createDbInstance, Db } from '../db/create-database';
+import { Db } from '../db/create-database';
 
 export let db: Db;
 

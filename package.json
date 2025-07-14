@@ -38,6 +38,7 @@
     "marked-highlight": "^2.2.1",
     "marked-mangle": "^1.1.10",
     "matter-js": "^0.20.0",
+    "ofetch": "^1.4.1",
     "open-props": "^1.7.15",
     "postcss": "^8.5.3",
     "prismjs": "^1.29.0",

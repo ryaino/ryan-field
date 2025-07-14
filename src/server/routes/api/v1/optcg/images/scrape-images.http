@@ -1,5 +1,5 @@
 ### Scrape Cards for a product and save to the db
-GET http://localhost:5173/api/v1/optcg/images/scrape
+GET http://localhost:3000/api/v1/optcg/images/scrape
 Content-Type: application/json
 ###
 

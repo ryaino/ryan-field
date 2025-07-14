@@ -1,25 +1,28 @@
 import { ScrapeCardsInput } from '../inputs/scrape-inputs.model';
 import {
   InsertCard,
-  upsertCards,
+  upsertCards
 } from '../../../../db/schema/tables/cards.table';
 import { db } from '../../../../server/globals.model';
 import { getCardInfo } from '../../../../../libs/optcg/scraper/scrape-cards';
 import { getAllSeries } from '../../../../../libs/optcg/scraper/scrape-product-series';
 import {
   InsertProduct,
-  upsertProducts,
+  upsertProducts
 } from '../../../../db/schema/tables/products.table';
 import {
   CardVariantsTable,
   InsertCardVariant,
   SelectCardVariant,
-  upsertCardVariants,
+  upsertCardVariants
 } from '../../../../db/schema/tables/card-variants.table';
 import { and, eq, isNull } from 'drizzle-orm';
 import * as fs from 'node:fs';
+import * as fsp from 'node:fs/promises';
 import axios from 'axios';
 import { useStorage } from 'nitropack/runtime';
+import { setFlagsFromString } from 'node:v8';
+import { runInNewContext } from 'node:vm';
 
 export async function scrapeCards(input: ScrapeCardsInput) {
   const rawCardInfo = await getCardInfo(input.seriesId);
@@ -52,21 +55,21 @@ async function insertCardsIntoDb(rawCardInfo: {
         block: convertToNumber(card.block),
         factions: card.type,
         text: card.text,
-        trigger: card.trigger,
+        trigger: card.trigger
       });
 
       variantsToInsert.push({
         cardId: card.id,
         productSeries: rawCardInfo.seriesId,
         sets: card.sets,
-        variantId: 'original',
+        variantId: 'original'
       });
     } else {
       variantsToInsert.push({
         cardId: card.id,
         productSeries: rawCardInfo.seriesId,
         sets: card.sets,
-        variantId: card.uniqueId.replace(card.id + '_', ''),
+        variantId: card.uniqueId.replace(card.id + '_', '')
       });
     }
   }
@@ -76,7 +79,7 @@ async function insertCardsIntoDb(rawCardInfo: {
 
   return {
     variants,
-    cards,
+    cards
   };
 }
 
@@ -96,7 +99,7 @@ async function insertSeriesIntoDb(
   rawSeriesInfo: {
     seriesId: string;
     name: string;
-  }[],
+  }[]
 ) {
   const productsToInput: InsertProduct[] = [];
 
@@ -105,30 +108,30 @@ async function insertSeriesIntoDb(
       productsToInput.push({
         id: 'P',
         name: option.name,
-        series: option.seriesId,
+        series: option.seriesId
       });
     } else if (option.name === 'Other Product Card') {
       productsToInput.push({
         id: 'Other',
         name: option.name,
-        series: option.seriesId,
+        series: option.seriesId
       });
     } else if (option.seriesId.length === 0) {
     } else {
       const productId = option.name.substring(
         option.name.indexOf('[') + 1,
-        option.name.lastIndexOf(']'),
+        option.name.lastIndexOf(']')
       );
 
       const productName = option.name.substring(
         option.name.indexOf('-') + 1,
-        option.name.lastIndexOf('[') - 2,
+        option.name.lastIndexOf('[') - 2
       );
 
       productsToInput.push({
         id: productId,
         name: productName,
-        series: option.seriesId,
+        series: option.seriesId
       });
     }
   }
@@ -162,6 +165,11 @@ export async function scrapeCardImages() {
 
   const storage = useStorage('db');
 
+  const promises: {
+    name: string;
+    promise: Promise<Blob>
+  }[] = [];
+
   for (const variant of variantsToUpdate) {
     console.log('----------start of loop------------');
     let imageName;
@@ -171,17 +179,36 @@ export async function scrapeCardImages() {
       imageName = `${variant.cardId}_${variant.variantId}.png`;
     }
 
-    const response = await $fetch<Blob>(
-      `https://en.onepiece-cardgame.com/images/cardlist/card/${imageName}`,
-      { responseType: 'blob' },
-    );
-    console.log('request sent');
-    await storage.setItemRaw(imageName, Buffer.from(await response.arrayBuffer()));
-    console.error('----------end of loop------------');
+    promises.push({
+      name: imageName, promise: $fetch<Blob>(
+        `https://en.onepiece-cardgame.com/images/cardlist/card/${imageName}`,
+        {
+          responseType: 'blob'
+        }
+      )
+    });
+  }
+  const images = await Promise.all(promises.map(promise => promise.promise));
+  const saveImages  = [];
+
+  for(let i = 0; i < images.length; i++) {
+    let imageName;
+    const variant = variantsToUpdate[i];
+    if (variant.variantId.toLowerCase() === 'original') {
+      imageName = `${variant.cardId}.png`;
+    } else {
+      imageName = `${variant.cardId}_${variant.variantId}.png`;
+    }
+
+    saveImages.push(fsp.writeFile(`${filePath}/${imageName}`, Buffer.from(await images[i].arrayBuffer())));
   }
 
+  // await Promise.all(saveImages);
+  console.log('request sent');
+  console.error('----------end of loop------------');
   return successImages;
 }
+
 
 async function getImage(imageName: string, variant: SelectCardVariant) {
   try {
@@ -211,8 +238,8 @@ async function getImage(imageName: string, variant: SelectCardVariant) {
     const { data } = await axios.get(
       `https://en.onepiece-cardgame.com/images/cardlist/card/${imageName}`,
       {
-        responseType: 'stream',
-      },
+        responseType: 'stream'
+      }
     );
     console.log('request sent');
 
@@ -230,5 +257,6 @@ async function getImage(imageName: string, variant: SelectCardVariant) {
     //     eq(CardVariantsTable.cardId, variant.cardId),
     //     eq(CardVariantsTable.variantId, variant.variantId))
     // )
-  } catch (err) {}
+  } catch (err) {
+  }
 }
