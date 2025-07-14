@@ -51,6 +51,14 @@ export default defineConfig(({ mode }) => ({
           },
         ],
       },
+      nitro: {
+        storage: {
+          db: {
+            driver: 'fs',
+            base: './'
+          }
+        }
+      }
     }),
 
   ],

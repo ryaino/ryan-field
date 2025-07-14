@@ -1,4 +1,4 @@
-import { CheerioAPI, fromURL, load } from 'cheerio';
+import { Cheerio, CheerioAPI, fromURL, load } from 'cheerio';
 
 export async function getCardInfo(seriesId: string) {
   const response = await fromURL(`https://en.onepiece-cardgame.com/cardlist/?series=${seriesId}`);
@@ -20,6 +20,7 @@ export async function getCardInfo(seriesId: string) {
     const cardType = extractType(content);
     const cardText = extractText(content);
     const cardTrigger = extractTrigger(content);
+    const cardSets = extractCardSets(content);
 
     parsedResults.push( {
       uniqueId: result.uniqueId,
@@ -33,12 +34,13 @@ export async function getCardInfo(seriesId: string) {
       block: cardBlock.result,
       type: cardType.result,
       text: cardText.text,
-      trigger: cardTrigger.result
+      trigger: cardTrigger.result,
+      sets: cardSets.result
     });
   }
 
   return {
-    productCode: '569111',
+    seriesId,
     productId: '',
     productName: '',
     productType: '',
@@ -117,6 +119,9 @@ function extractText(data: CheerioAPI) {
   })
 }
 
+function extractCardSets(data: CheerioAPI) {
+  return extractOnlyTextChild(data, '.getInfo');
+}
 
 function extractOnlyTextChild(data: CheerioAPI, selector: string) {
   return data.extract({

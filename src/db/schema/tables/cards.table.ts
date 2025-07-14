@@ -1,6 +1,7 @@
 import { sqliteTable } from 'drizzle-orm/sqlite-core';
 import * as t from 'drizzle-orm/sqlite-core';
 import { Db } from '../../create-database';
+import { conflictUpdateAllExcept } from "../../utils";
 
 export const CardsTable = sqliteTable('cards', {
   id: t.text().primaryKey(),
@@ -19,10 +20,14 @@ export const CardsTable = sqliteTable('cards', {
 });
 
 export type InsertCard = typeof CardsTable.$inferInsert;
+export type SelectCard = typeof CardsTable.$inferSelect;
 
 export async function upsertCards(data: InsertCard[], db: Db) {
   return db.insert(CardsTable)
     .values(data)
-    .onConflictDoNothing()
+    .onConflictDoUpdate({
+      target: CardsTable.id,
+      set: conflictUpdateAllExcept(CardsTable, ["id"])
+    })
     .returning()
 }

@@ -2,9 +2,6 @@
   "name": "ryan-field",
   "version": "0.0.0",
   "type": "module",
-  "engines": {
-    "node": ">=20.19.1"
-  },
   "scripts": {
     "ng": "ng",
     "dev": "ng serve",
