@@ -2,6 +2,7 @@
 
 /storybook-static
 .env
+/src/server/assets/cards/
 # Compiled output
 /dist
 /tmp

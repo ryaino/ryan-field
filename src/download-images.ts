@@ -1,32 +1,27 @@
 import { CardVariantsTable } from './db/schema/tables/card-variants.table';
-import { isNull } from 'drizzle-orm';
+import { and, eq, isNull } from 'drizzle-orm';
 import fs from 'node:fs';
 import fsp from 'node:fs/promises';
 import { ofetch } from 'ofetch';
 import { drizzle } from 'drizzle-orm/better-sqlite3';
 
-const variantsToUpdate = await drizzle({
+
+const db = drizzle({
   connection: './local.db',
   casing: 'snake_case',
-})
-  .select()
+});
+
+const variantsToUpdate = await db.select()
   .from(CardVariantsTable)
   .where(isNull(CardVariantsTable.imageLocation));
 // .limit(10);
 
-const filePath = 'src/server/assets/cards';
 
-try {
-  if (!fs.existsSync('src/server/assets')) {
-    fs.mkdirSync('src/server/assets');
+const assetsPath = 'src/server/assets';
+const cardsPath = `${assetsPath}/cards`;
 
-    if (!fs.existsSync(filePath)) {
-      fs.mkdirSync(filePath);
-    }
-  }
-} catch (err) {
-  console.error(err);
-}
+ensureDirectoryExists(assetsPath);
+ensureDirectoryExists(cardsPath);
 
 const failedImages = [];
 const successImages = [];
@@ -66,15 +61,40 @@ for (let i = 0; i < images.length; i++) {
   } else {
     imageName = `${variant.cardId}_${variant.variantId}.png`;
   }
+  const cardPath = `${cardsPath}/${variant.cardId.split('-')[0]}`;
 
+  ensureDirectoryExists(cardPath);
   saveImages.push(
-    fsp.writeFile(
-      `${filePath}/${imageName}`,
-      Buffer.from(await images[i].arrayBuffer()),
-    ),
+    new Promise(async (resolve, reject) => {
+      resolve(fsp.writeFile(
+        `${cardPath}/${imageName}`,
+        Buffer.from(await images[i].arrayBuffer())
+      ).then(async () => {
+        await db.update(CardVariantsTable).set( {
+          imageLocation: 'local'
+        }).where(
+          and(
+            eq(CardVariantsTable.cardId, variant.cardId),
+            eq(CardVariantsTable.variantId, variant.variantId))
+        )
+      }))
+    })
+
   );
 }
+
+
 
 // await Promise.all(saveImages);
 console.log('request sent');
 console.error('----------end of loop------------');
+
+function ensureDirectoryExists(path: string) {
+  try {
+    if (!fs.existsSync(path)) {
+      fs.mkdirSync(path);
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}

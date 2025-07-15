@@ -1,0 +1,11 @@
+### Scrape Cards for a product and save to the db
+POST http://localhost:5173/api/v1/optcg/cards/scrape
+Content-Type: application/json
+
+{
+  "seriesId": "569801"
+}
+
+###
+GET http://localhost:5173/api/v1/optcg/cards/OP06-112
+Content-type: image/png

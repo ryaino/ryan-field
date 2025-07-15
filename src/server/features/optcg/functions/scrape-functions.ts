@@ -11,18 +11,10 @@ import {
   upsertProducts
 } from '../../../../db/schema/tables/products.table';
 import {
-  CardVariantsTable,
   InsertCardVariant,
-  SelectCardVariant,
   upsertCardVariants
 } from '../../../../db/schema/tables/card-variants.table';
-import { and, eq, isNull } from 'drizzle-orm';
-import * as fs from 'node:fs';
-import * as fsp from 'node:fs/promises';
-import axios from 'axios';
-import { useStorage } from 'nitropack/runtime';
-import { setFlagsFromString } from 'node:v8';
-import { runInNewContext } from 'node:vm';
+
 
 export async function scrapeCards(input: ScrapeCardsInput) {
   const rawCardInfo = await getCardInfo(input.seriesId);
@@ -47,7 +39,7 @@ async function insertCardsIntoDb(rawCardInfo: {
         rarity: card.rarity,
         category: card.category,
         name: card.name,
-        cost: convertToNumber(card.cost),
+        cost: convertCostToNumber(card.cost),
         attribute: card.attribute,
         power: convertToNumber(card.power),
         counter: convertToNumber(card.counter),
@@ -89,10 +81,20 @@ function convertToNumber(input: string): number | null {
   return +input;
 }
 
+function convertCostToNumber(input: string): number | null {
+  if (input === undefined || input === null || input === '' || input === '-')
+    return 0;
+  return +input;
+}
+
 export async function scrapeProductSeries() {
   const rawSeriesInfo = await getAllSeries();
 
-  return await insertSeriesIntoDb(rawSeriesInfo);
+  try {
+    return await insertSeriesIntoDb(rawSeriesInfo);
+  } catch (e) {
+    console.error('Error inserting cards');
+  }
 }
 
 async function insertSeriesIntoDb(
@@ -139,124 +141,3 @@ async function insertSeriesIntoDb(
   return await upsertProducts(productsToInput, db);
 }
 
-export async function scrapeCardImages() {
-  const variantsToUpdate = await db
-    .select()
-    .from(CardVariantsTable)
-    .where(isNull(CardVariantsTable.imageLocation));
-  // .limit(10);
-
-  const filePath = 'src/server/assets/cards';
-
-  try {
-    if (!fs.existsSync('src/server/assets')) {
-      fs.mkdirSync('src/server/assets');
-
-      if (!fs.existsSync(filePath)) {
-        fs.mkdirSync(filePath);
-      }
-    }
-  } catch (err) {
-    console.error(err);
-  }
-
-  const failedImages = [];
-  const successImages = [];
-
-  const storage = useStorage('db');
-
-  const promises: {
-    name: string;
-    promise: Promise<Blob>
-  }[] = [];
-
-  for (const variant of variantsToUpdate) {
-    console.log('----------start of loop------------');
-    let imageName;
-    if (variant.variantId.toLowerCase() === 'original') {
-      imageName = `${variant.cardId}.png`;
-    } else {
-      imageName = `${variant.cardId}_${variant.variantId}.png`;
-    }
-
-    promises.push({
-      name: imageName, promise: $fetch<Blob>(
-        `https://en.onepiece-cardgame.com/images/cardlist/card/${imageName}`,
-        {
-          responseType: 'blob'
-        }
-      )
-    });
-  }
-  const images = await Promise.all(promises.map(promise => promise.promise));
-  const saveImages  = [];
-
-  for(let i = 0; i < images.length; i++) {
-    let imageName;
-    const variant = variantsToUpdate[i];
-    if (variant.variantId.toLowerCase() === 'original') {
-      imageName = `${variant.cardId}.png`;
-    } else {
-      imageName = `${variant.cardId}_${variant.variantId}.png`;
-    }
-
-    saveImages.push(fsp.writeFile(`${filePath}/${imageName}`, Buffer.from(await images[i].arrayBuffer())));
-  }
-
-  // await Promise.all(saveImages);
-  console.log('request sent');
-  console.error('----------end of loop------------');
-  return successImages;
-}
-
-
-async function getImage(imageName: string, variant: SelectCardVariant) {
-  try {
-    // let image = await $fetch(
-    //   `https://en.onepiece-cardgame.com/images/cardlist/card/${imageName}`,
-    //   { responseType: "arrayBuffer" },
-    // );
-    // console.log(image);
-    //
-    // fs.writeFileSync(
-    //   `${filePath}/${imageName}`,
-    //   // @ts-ignore
-    //   image
-    // );
-    const filePath = 'src/server/assets/cards';
-    const writer = fs.createWriteStream(`${filePath}/${imageName}`);
-    console.log('stream created');
-
-    const progress = new Promise((resolve, reject) => {
-      writer.on('finish', () => {
-        console.log('writing complete');
-        writer.close();
-        resolve(true);
-      });
-      writer.on('error', reject);
-    });
-    const { data } = await axios.get(
-      `https://en.onepiece-cardgame.com/images/cardlist/card/${imageName}`,
-      {
-        responseType: 'stream'
-      }
-    );
-    console.log('request sent');
-
-    // fs.writeFileSync(`${filePath}/${imageName}`, data);
-
-    data.pipe(writer);
-
-    await progress;
-
-    console.log('file written');
-    // await db.update(CardVariantsTable).set( {
-    //   imageLocation: 'local'
-    // }).where(
-    //   and(
-    //     eq(CardVariantsTable.cardId, variant.cardId),
-    //     eq(CardVariantsTable.variantId, variant.variantId))
-    // )
-  } catch (err) {
-  }
-}

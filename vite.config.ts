@@ -42,6 +42,10 @@ export default defineConfig(({ mode }) => ({
           '/projects',
           '/theme',
           {
+            route: '/optcg/test',
+            staticData: true
+          },
+          {
             contentDir: 'src/content/projects',
             transform: (file: PrerenderContentFile) => {
               // use the slug from frontmatter if defined, otherwise use the files basename
