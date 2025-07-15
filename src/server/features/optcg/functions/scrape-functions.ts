@@ -94,6 +94,7 @@ export async function scrapeProductSeries() {
     return await insertSeriesIntoDb(rawSeriesInfo);
   } catch (e) {
     console.error('Error inserting cards');
+    console.error(e);
   }
 }
 
