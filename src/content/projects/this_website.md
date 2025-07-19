@@ -28,12 +28,12 @@ I've made the decision to use this as an opportunity to learn by building one fr
 The great thing about this stack is that it can be as simple or complex as I want to be. At the moment everything you see
 is being statically built and deployed automatically to GitHub Pages on every commit. This, combined with Analog's ability to
 create routes and render using markdown files, provides a simple and powerful way for me to add new content. What you're reading
-right now and every other project page is each a single markdown file that is converted to html with it's own route at build time.
+right now and every other project page is each a single markdown file that is converted to html with its own route at build time.
 
 ### Future Plans
 
 Once I reach the point of adding more features, or migrating old projects under here that require a server and/or database,
-then the plan is to move everything in a virtual machine with the help of Docker.
+then the plan is to host everything in a virtual machine with the help of Docker.
 
 To help with the development of my own UI library I've incorporated Storybook. Once I've built out some components then I'll
 make that documentation available for viewing.

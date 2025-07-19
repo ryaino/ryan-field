@@ -18,7 +18,7 @@ import { bootstrapGithub, bootstrapGlobe } from "@ng-icons/bootstrap-icons";
     <h2>{{ post.attributes.title }}</h2>
     <span class="links">
       <ng-icon name="bootstrapGithub"/>
-      <a [href]="post.attributes.repository"> Repository </a>
+      <a class="m" [href]="post.attributes.repository"> Repository </a>
 
       @if(post.attributes.link) {
         <ng-icon name="bootstrapGlobe"/>
