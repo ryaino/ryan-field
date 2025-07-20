@@ -18,7 +18,7 @@ My solution to this was to create a web page where I could select an album I wan
 
 ### The Tech
 
-Before being able to actually scrape the aforementioned websites, you first have to figure out what it is you actually want to search for. There could be dozens of different versions of a single album and each website could have their own way to represent / categorize each of those versions. The solution to this is to use the [Discogs](https://www.discogs.com/) api to find the "master" of the album you're looking for which will then provide the scraper with all the different versions to look for. 
+Before being able to actually scrape the aforementioned websites, you first have to figure out what it is you actually want to search for. There could be dozens of different versions of a single album and each website could have their own way to represent / categorize each of those versions. The best way to find all of these is to use the [Discogs](https://www.discogs.com/) api to find the "master" of the album you're looking for which will then provide the scraper with all the different versions to look for. 
 
 Since I was the only person intending to use this, the first version of this was actually just a REST API made in Java. Java was all I had experience with at the time and I liked the idea of not having to build a UI as I could just use any http client like Postman. You can find the repository for that version [here](https://github.com/ryaino/NZ-Record-Store-Search-Aggregator).
 
