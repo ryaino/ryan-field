@@ -91,7 +91,7 @@ import {
     styles: `
 
       input {
-        display: none;
+        visibility: hidden;
       }
 
       * {

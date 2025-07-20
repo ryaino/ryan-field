@@ -13,15 +13,15 @@ export const routeMeta: RouteMeta = {
     },
     {
       name: 'author',
-      content: 'Analog Team',
+      content: 'Ryan Field',
     },
     {
       property: 'og:title',
-      content: 'Title of the page',
+      content: 'Ryan Field | Full Stack Developer',
     },
     {
       property: 'og:description',
-      content: 'Some catchy description',
+      content: 'All about me and my development work',
     }
   ],
 };
