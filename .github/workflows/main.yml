@@ -16,7 +16,7 @@ jobs:
       - uses: k9n-dev/analog-publish-gh-pages@v1.0.0
         with:
           # Required: token to access / deploy on GitHub Pages
-          access-token: ${{ secrets.ACCESS_TOKEN }}
+          access-token: ${{ secrets.GITHUB_TOKEN }}
           # Optional: arguments passed to `npm ci`
           install-args: ''
           # Optional: arguments passed to `npm run build`
