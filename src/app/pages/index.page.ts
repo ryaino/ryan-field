@@ -32,12 +32,12 @@ export const routeMeta: RouteMeta = {
   template: `
     <app-hero></app-hero>
     <hr>
-    <app-responsibilities></app-responsibilities>
-    <hr>
-    <app-tools></app-tools>
-    <hr>
-    <app-footer></app-footer>
-    <hr>
+<!--    <app-responsibilities></app-responsibilities>-->
+<!--    <hr>-->
+<!--    <app-tools></app-tools>-->
+<!--    <hr>-->
+<!--    <app-footer></app-footer>-->
+<!--    <hr>-->
   `,
   styles: `
   `,

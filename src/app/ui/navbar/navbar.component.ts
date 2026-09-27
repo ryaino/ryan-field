@@ -16,7 +16,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 })
 export class NavbarComponent {
   theme: FormControl<string | null> = new FormControl(
-    'blue-ice',
+    'catpuccin-mocha',
     Validators.requiredTrue,
   );
 
@@ -32,6 +32,20 @@ export class NavbarComponent {
       this.document.body.style.overflow = 'auto';
     }
   });
+
+   navLinks = [{
+     display: 'Home',
+     route: '/'
+   },{
+     display: 'Projects',
+     route: '/projects'
+   },{
+     display: 'Theme',
+     route: '/theme'
+   },{
+     display: 'Needles',
+     route: '/needles'
+   },]
 
   constructor(
     @Inject(DOCUMENT) private document: Document,

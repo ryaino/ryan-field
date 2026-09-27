@@ -12,7 +12,7 @@ import {
     imports: [ ReactiveFormsModule ],
     template: `
       <form [formGroup]="form">
-        <h3>Theme Customizer</h3>
+        <h2>Theme Customizer</h2>
         <p class="text-center">
           The General layout of this page and the approach I used for theming
           the

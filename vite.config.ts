@@ -41,6 +41,7 @@ export default defineConfig(({ mode }) => ({
           '/',
           '/projects',
           '/theme',
+          '/needles',
           {
             contentDir: 'src/content/projects',
             transform: (file: PrerenderContentFile) => {

@@ -1,0 +1,28 @@
+:root {
+  --brand-catpuccin-mocha: oklch(0.791 0.096 228.653);
+
+  --text-1-catpuccin-mocha: oklch(0.879 0.043 272.277);
+  --text-2-catpuccin-mocha: oklch(0.751 0.040 273.932);
+
+  --surface-1-catpuccin-mocha: oklch(0.324 0.032 281.978);
+  --surface-2-catpuccin-mocha: oklch(0.243 0.030 283.911);
+  --surface-3-catpuccin-mocha: oklch(0.216 0.025 284.065);
+  --surface-4-catpuccin-mocha: oklch(0.183 0.020 284.204);
+
+  --surface-shadow-catpuccin-mocha: 240 21% 12%;
+  --shadow-strength-catpuccin-mocha: 2%;
+}
+
+[color-scheme="catpuccin-mocha"] {
+  color-scheme: catpuccin-mocha;
+
+  --brand: var(--brand-catpuccin-mocha);
+  --text-1: var(--text-1-catpuccin-mocha);
+  --text-2: var(--text-2-catpuccin-mocha);
+  --surface-1: var(--surface-1-catpuccin-mocha);
+  --surface-2: var(--surface-2-catpuccin-mocha);
+  --surface-3: var(--surface-3-catpuccin-mocha);
+  --surface-4: var(--surface-4-catpuccin-mocha);
+  --surface-shadow: var(--surface-shadow-catpuccin-mocha);
+  --shadow-strength: var(--shadow-strength-catpuccin-mocha);
+}

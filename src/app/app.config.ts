@@ -19,7 +19,6 @@ import {
   withMarkdownRenderer,
 } from '@analogjs/content';
 import { withPrismHighlighter } from '@analogjs/content/prism-highlighter';
-import { provideClientHydration } from '@angular/platform-browser';
 
 export const appConfig: ApplicationConfig = {
   providers: [
